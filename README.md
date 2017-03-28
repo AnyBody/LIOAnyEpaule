@@ -1,7 +1,7 @@
 # LIOAnyEpaule
 LIOAnyEpaule (Epaule is french for shoulder) is a musculoskeletal model for
 non-conforming total shoulder arthroplasty (NC-TSA) evaluation. The model is
-developed by [Lauranne Sins](https://www.linkedin.com/in/laurannesins/) at
+developed by [Lauranne Sins](https://www.linkedin.com/in/laurannesins/) ([@Laul](https://github.com/Laul)) at
 _Laboratoire de recherche en Imagerie et Orthopedie_ (LIO, Montreal (QC),
 Canada).
 
