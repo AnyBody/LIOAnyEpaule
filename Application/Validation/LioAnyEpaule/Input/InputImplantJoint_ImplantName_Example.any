@@ -1,0 +1,65 @@
+/* INPUTIMPLANTJOINT_IMPLANTNAME.ANY
+Parameters to set implants and joint parameters:
+  - Implants names
+  - Implants positions (!!Must be calculated outside AnyBody!!). cf "Seg.any" for more information
+      - Humeral head (HH) implant position: transform matrix HH_CoordinateSystem to HumerusBoneGeometryNode
+      - Glenoid implant position: transform matrix Glenoid_CoordinateSystem to GlenImplantPos
+
+NB: this file is an example, based on the template "InputImplantJoint_ImplantName_Template.any":
+  - It should not be modified 
+  - The template should be duplicated and new file should be saved with specific name to replace "ImplantName_Template"
+
+Author: Lauranne Sins, LIO Montréal (QC)
+Date: 09-2015
+Model - Version: LioAnyShoulder - v1.0
+*/
+
+/* -------- IMPLANTS -------- 
+Names and positions of humeral head and glenoid components
+GH joint position (depends on the chosen implants !)
+----------------------------- */
+AnyFolder &InputVar1=Main.InputVariables;
+
+InputVar1={
+  AnyFolder ImplantParameters = {
+     
+    // FILENAMES
+    // Be sure that STL Models are in the folder "..\Body\STLModels\ImplantModels"
+    // If in subfolder, specify subfolder names
+    AnyFolder ImplantNames = {
+      AnyString HumerusName = "HeadCustom";
+      AnyString GlenoidName = "GlenoidCustom";
+    };
+    
+    // HUMERAL IMPLANT POSITION/ORIENTATION
+    // From HumerusBoneGeometryNode to the humeral head component Coordinate System (on 3d model)
+    AnyFolder HumPosition = {
+      AnyVec3 Position = 0.001*{ -5.540853,  10.789656, -9.015082};
+      AnyMat33 Rotation = {
+        {-0.812458,  -0.580636,  0.052665},
+        { 0.582513,  -0.804669,  0.114832},
+        {-0.024298,   0.123974,  0.991988}
+     };
+   };
+    
+    // GLENOID IMPLANT POSITION/ORIENTATION
+    // From Scapula to glenoid component Coordinate System (on 3d model)
+    AnyFolder GlenPosition = {
+      AnyVec3 Position = 0.001*{2.319331, -40.747832,-33.903550};
+      AnyMat33 Rotation = {
+        {0.194141,	0.129356,	-0.972408},
+        {0.336572,	0.922313,	0.189889},
+        {0.921427,	-0.364151,	0.135521}
+      };
+    };
+  };
+  
+  // GH JOINT POSITION
+  // To adjust to have small contact between humeral head and glenoid components after the "InitialCondition" step
+  AnyFolder JointPosition = {
+    AnyVar px = -.001;     //AP : Anterieur = +   
+    AnyVar py = 0.003;     //IS : Superieur = +  
+    AnyVar pz = -0.0029;     //ML : Lateral = +
+  };
+};
+

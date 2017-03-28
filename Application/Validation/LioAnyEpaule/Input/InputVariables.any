@@ -1,0 +1,63 @@
+/* INPUTVARIABLES.ANY
+Variables and parameters to modify at each simulation. See comments in the document for details.
+
+Author: Lauranne Sins, LIO Montréal (QC)
+Date: 09-2015
+Model - Version: LioAnyShoulder - v1.0
+*/
+
+AnyFolder InputVariables = {
+
+    /* -- FILES/FOLDERS NAMES --
+  m_ResultFile :   Name for results file (saved as .txt or .h5)
+  m_ResultFolder : Name for folder results. !!Must be created on computer before!!
+  m_ResultPath :   Complete path to the "NameFolder" folder
+  WARNING:    Be sure that the m_ResultFolder variable refers to an existing folder on your computer !!
+  ----------------------------- */
+  #define m_ResultFile "20151010-LIOAnyShoulder_Verification2"
+  #define m_ResultFolder "Results\"
+  #define m_ResultPath "..\..\..\..\"
+
+  
+  /* -------- IMPLANTS -------- 
+  NB: read the note about restricted copyright and use of 3d implants models in the file "Description.any"
+
+  NAMES AND POSITIONS: Managed in an axternal file. Perform the following steps: 
+      1- Duplicate the template: "InputImplantJoint_ImplantName_Template.any" (let the copy in the Folder "Input")
+      2- Rename the new file by changing only "Template" in "InputImplantJoint_ImplantName_Template.any" (ex. smthg like "InputImplantJoint_ImplantName_Example.any") 
+      3- Modify the variable "INPUTPOS" below to correspond to the replacement word for "Template":
+  ----------------------------- */
+  #define INPUTPOS "ImplantName_Example"
+  
+  /* -------- CUFF TEAR -------- 
+    0 Healthy / No tear
+    1 Supraspinatus tear
+    2 Supraspinatus + infraspinatus tears
+    3 Massive tear: supra + infra + 2/3 subscap [Beidi, 2010]
+    4 Subscapularis tear (totale) [Blalock, 2012]
+    5 Subscapularis tear (2/3 sup)
+  ----------------------------- */
+  #define Tear 0
+  
+  /* ----- SPECIFIC PATIENT ----- 
+    0 AnyBody Model
+    1 Ct-scans scale [!! Not fully validated !!]
+    2 External landmarks scale: [!! Not fully validated !!]
+        - Create and fill custom file based on the "Mesures_PatientName.any" file ; Rename it with a custom PatientName
+        - Replace the "MEASURE" variable by your custom PatientName. 
+  ----------------------------- */
+  #define scale 0
+  // To replace by the same name as the corresponding sequence in filename ("Scaling/Mesures_PatientName.any")  
+  #if scale == 2
+    #define SUBJECT "PatientName" 
+  #endif
+  
+  /* --------- CAMERA --------- 
+    Camera parameters are stored in the file "Camera.any" (Folder Output)
+    Camera == 1 : Activate auto save by camera 
+    Vue == 1 : Global view, 45deg scapula
+    Vue == 2 : Fixed view, face to glenoid
+  ----------------------------- */
+  #define Camera 0
+  #define Vue 1
+};

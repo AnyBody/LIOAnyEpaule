@@ -1,0 +1,5 @@
+AnyDrawNode DrwNode = {
+  ScaleXYZ = Main.DrawSettings.BML.ScaleXYZ;
+  RGB = Main.DrawSettings.BML.RGB;
+  Opacity=0;
+};

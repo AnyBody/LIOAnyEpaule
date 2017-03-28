@@ -1,0 +1,5 @@
+load "../AnyEpaule.Main.any"  
+operation Main.Scale
+run 
+exit 
+exit

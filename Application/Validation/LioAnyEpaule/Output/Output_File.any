@@ -1,0 +1,119 @@
+/* OUTPUT_FILE.ANY
+Function to create a text file with the main variables required to evaluate glenohumeral joint. It includes, among others:
+  - Muscles activities, strengths, forces, powers
+  - Humeral head translation relative to the glenoid
+  - Arm elevation (humerus relative to trunk)
+  - Contact between prosthetic components: area, force, center of pressure
+
+NB: the main reasons why I used a *.txt file to output results are:
+  1/ the ease-of-use of this format in Matlab
+  2/ the fact that I already created a user interface (GUI) to treat the results I got when I discovered *.h5 format to export data with similar hierachy than the tree in AnyBody. 
+
+Author: Lauranne Sins, LIO Montréal (QC)
+Date: 09-2015
+Model - Version: LioAnyShoulder - v1.0
+*/
+
+
+ // Shortcuts
+  AnyFolder &Jnt = Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt;
+  AnyFolder &Seg = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg;
+  AnyFolder &Mus = Main.HumanModel.BodyModel.Right.ShoulderArm.Mus;
+  AnyRefFrame &ForceRefFrame = Seg.Scapula.gh;
+
+  // Save in a *.txt file
+  AnyOutputFile FileOut = {
+    // Check that file does not exist, otherwise makes a sequenced file (i.e. NameFile_#filenumber.txt)
+    #include "Output_CheckName.any"
+    FileName = get_filename({m_ResultPath + m_ResultFolder + m_ResultFile},{"txt"}) ;
+    NumberFormat.Digits = 6;
+    
+    
+    Header = {
+      TitleSectionOnOff = On;
+      ConstSectionOnOff = On;
+      VarSectionOnOff = On;
+    };
+   
+    // Input Values 
+    AnyVar nstep = Main.Study.nStep;
+    AnyVar k0 = Main.InputVariables.SettingValues.FDK.k0;
+    AnyVar k1 = Main.InputVariables.SettingValues.FDK.k1;
+    AnyVar k2 = Main.InputVariables.SettingValues.FDK.k2;
+    AnyVar k4 = Main.InputVariables.SettingValues.FDK.k4;
+    AnyVar kz = Main.InputVariables.SettingValues.FDK.kz;
+    
+    AnyVar px = Main.InputVariables.JointPosition.px;
+    AnyVar py = Main.InputVariables.JointPosition.py;
+    AnyVar pz = Main.InputVariables.JointPosition.pz;
+    AnyVar kd = Main.InputVariables.SettingValues.Contact.kd;
+    AnyVar S_DeltoidAnt = Main.InputVariables.SettingValues.ScaleStrengthMuscle.S_DeltoidAnt;
+    AnyVar S_DeltoidMid = Main.InputVariables.SettingValues.ScaleStrengthMuscle.S_DeltoidMid ;
+    AnyVar S_DeltoidPost = Main.InputVariables.SettingValues.ScaleStrengthMuscle.S_DeltoidPost ;
+    AnyVar S_Infra = Main.InputVariables.SettingValues.ScaleStrengthMuscle.S_Infra ;
+    AnyVar S_Supra = Main.InputVariables.SettingValues.ScaleStrengthMuscle.S_Supra ;
+    AnyVar S_Sub = Main.InputVariables.SettingValues.ScaleStrengthMuscle.S_Sub ;
+
+    
+    // KINEMATIC
+    AnyVar rot = Main.HumanModel.BodyModel.Interface.Right.GlenohumeralAbduction.Pos[0]; // Total abduction angle (rad)
+    AnyVar rotD= rot*180/pi; // Total abduction angle (deg)
+    AnyVar vel = Main.HumanModel.BodyModel.Interface.Right.GlenohumeralAbduction.Vel[0]; // Angular velocity
+
+    // Humeral head Cordinate System (CS)
+    AnyFloat pos = .Jnt.GHLin.Pos;     // Humeral head CS position vs glenoid CS (gh)
+    AnyFloat angles = .Jnt.GHRot.Pos;  // Humeral head CS rotation vs glenoid CS (gh)
+    
+    // Scapula CS
+    AnyFloat Scap_R = .Seg.Scapula.Axes; // Rotation Scapula vs global
+    AnyFloat Scap_P = .Seg.Scapula.r;    // Position Scapula vs global
+
+    // gh CS
+    AnyFloat Gh_R = .Seg.Scapula.gh.Axes; // Rotation gh vs global
+    AnyFloat Gh_P= .Seg.Scapula.gh.r;     // Position gh vs global
+
+    // ghProth 
+    AnyFloat GhProth_R = .Seg.Scapula.gh.ghProth.Axes; // Rotation ghProth vs global
+    AnyFloat GhProth_P = .Seg.Scapula.gh.ghProth.r;    // Position ghProth vs global
+
+    // Glenoid Implant
+    AnyFloat RotG = .Seg.Scapula.GlenImplantPos.Axes; // Rotation glenoid implant vs global
+    AnyFloat PosG = .Seg.Scapula.GlenImplantPos.r;    // Position  glenoid implant vs global
+    
+    // Humeral Head Implant
+    AnyFloat Hum_R = .Seg.Humerus.HumerusBoneGeometryNode.HumImplantPos.Axes; // Rotation Humeral Head implant vs global
+    AnyFloat Hum_P = .Seg.Humerus.HumerusBoneGeometryNode.HumImplantPos.r;    // Position Humeral Head implant vs global
+
+    // GH-JRF if no contact between implants (use of push muscles)
+    #if stl==0
+      AnyFloat ContactForce = .Jnt.GHReactions.ResultanForce.FTotalLocalGhProth;
+    #endif
+    
+    // Contact values if contact between STL implant models
+    #if stl ==1
+      AnyFloat ContactForce = .Jnt.ProtheseContact.Fout; // GH-JRF
+      
+      AnyVec3 COPGlobal = .Jnt.ProtheseContact.COP; // Center of Pressure Humeral head on glenoid 
+      AnyVec3 COPlocalGhProth =  (.Jnt.ProtheseContact.COP-GhProth_P) * GhProth_R ; // COP in local ref frame "ghProth"
+      AnyVec3 COPlocalImplant =  (.Jnt.ProtheseContact.COP-PosG )* RotG ;  // COP in local ref frame "GlenImplantPos"
+      
+      AnyVar ContactArea= .Jnt.ProtheseContact.ContactArea; // Contact area 
+      AnyVar MaxPenetration= .Jnt.ProtheseContact.MaxPenetration; // Maximum Penetration of the humeral head implant (metal=non deformable) in the glenoid component (plastic=defromable)
+    #endif
+    
+    // Muscles
+    AnyVar MaxMuscleAct = Main.Study.MaxMuscleActivity;
+      
+    #if DeltoidOutput == 1
+      AnyFolder Deltoid = {#include "Output_Deltoid.any"};
+    #endif
+    
+    #if CuffOutput == 1
+      AnyFolder Cuff = {#include "Output_cuff.any"};
+    #endif
+
+    // Force error at each step 
+    AnyVar ForceTolError = Main.Study.ForceDepKinError.Val;  
+
+  };
+  

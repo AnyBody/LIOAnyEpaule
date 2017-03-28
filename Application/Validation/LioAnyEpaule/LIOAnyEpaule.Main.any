@@ -1,0 +1,100 @@
+/* ------------------ LIOANYEPAULE.MAIN.ANY ------------------ 
+
+Main file to load the "LioAnyShoulder" model. NB: The filename is in french (Lio
+AnyEpaule), english translation corresponds to "LioAnyShoulder". It consists in
+an inverse dynamic musculoskeletal model of shoulder. This model was developed
+in the objective to be used for non-conforming total shoulder arthroplasty
+(NC-TSA) evaluation. Refer to the following paper for details of implementation:
+Sins L, Tétreault P, Hagemeister N, Nuño N. Adaptation of the AnyBody™
+Musculoskeletal Shoulder Model to the Nonconforming Total Shoulder Arthroplasty
+Context. ASME. J Biomech Eng. 2015;137(10):101006-101006-7.
+doi:10.1115/1.4031330. Online:
+http://biomechanical.asmedigitalcoll...&resultClick=3
+
+NB: read the note about restricted copyright and use of 3d implants models in
+the file "Description.any"
+
+Author:     Lauranne Sins
+Instituion: Laboratoire de recherche en Imagerie et Orthopedie (LIO, Montreal (QC), Canada)
+Version:    1.0
+Date:       09/2015
+----------------------------------------------------------- */
+
+#include "../libdef.any"
+
+// Find a detailed description of the model here
+#include "Model/Description.any"
+
+Main = {
+  // Input Parameters. To modify at each simulation
+  #include "Input/InputVariables.any"
+
+  // Values and files to parameter the model.
+  #include "Model/LoadValues.any"
+  #include "Model/LoadFiles.any"
+  
+  #include "<ANYBODY_PATH_TOOLBOX>\Operations\RunAppSequence.any"
+  #include "Model/BMSettings.any"
+  
+  #include "<ANYBODY_PATH_BODY>/HumanModel.any"  
+  
+  HumanModel = {    
+    // Create a node for Bergmann's force reference
+    BodyModel.Right.ShoulderArm.Seg.Humerus.gh = {
+      AnyRefNode Bergmann = {
+        ARel = RotMat(90*pi/180,y);
+        //        AnyDrawRefFrame drwref = {
+        //          RGB = {1,0,0};
+        //          ScaleXYZ = {1,1,1}/5;
+      };
+    };
+  };
+  
+  AnyFolder Model = {
+    
+    AnyFolder &HumanModel=.HumanModel.BodyModel;
+    
+    // Definition of the model environment
+    #include "Model/Environment.any"
+      
+    AnyFolder ModelEnvironmentConnection = {
+        #include "Model/JointsAndDrivers.any"
+    };
+  };
+  
+  AnyBodyStudy Study = {
+    AnyFolder &Model = .Model;
+    #if BallAndSocket == 1
+        // Output variables collecting the GH forces in the pertinent coordinate frame
+        AnyVec3 GHReactionInHumerus = -(Model.HumanModel.Right.ShoulderArm.Seg.Humerus.gh.Bergmann.Axes'
+           *Model.HumanModel.Right.ShoulderArm.Jnt.GHReactions.ResultanForce.FTotalGlobal')';
+    #endif
+    
+    tEnd = DesignVar(120.0); // 5;
+    Gravity = {0.01, -9.81, 0.01};
+    nStep = 60;
+    
+    InverseDynamics.Criterion.Type=MR_QuadraticAux;
+    
+    #if BallAndSocket == 0
+      InverseDynamics.ForceDepKinOnOff=On;
+      InverseDynamics.ForceDepKin.MaxIteration=50;
+      
+      AnyOutputFun ForceDepKinError = {
+        Val = Main.Study.InverseDynamics.ForceDepKinError;
+      };
+    #endif 
+    
+    
+    // Create output file results in "*.txt" format
+    #if BM_ARM_MUSCLES_RIGHT == CONST_MUSCLES_3E_HILL | BM_ARM_MUSCLES_RIGHT == CONST_MUSCLES_SIMPLE  
+      #include "Output/Output_File.any"
+    #endif
+    
+    AnyVar rot = Main.HumanModel.BodyModel.Interface.Right.GlenohumeralAbduction.Pos[0]; // Total Abduction angle [rad]
+    AnyVar rotD= rot*180/pi; // Total Abduction angle [deg]
+    
+  }; // End of study
+  
+}; // Main
+

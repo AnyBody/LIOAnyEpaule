@@ -1,0 +1,78 @@
+/* SCALINGLAWHUMERUS.ANY
+This file defines a subject-specific morphing law for the Lesson 4 of Scaling tutorial
+
+Author:     Lauranne Sins
+Instituion: Laboratoire de recherche en Imagerie et Orthopedie (LIO, Montreal (QC), Canada)
+Version:    1.0
+Date:       09/2015
+*/
+
+
+AnyFolder MyScalingLaw = {
+ 
+  #include "../Input/HumerusSourcePoints.any"
+  #include "../Input/HumerusTargetPoints.any"
+  
+  AnyFunTransform3DLin Transform = {
+    ScaleMat = {{1,0,0},{0,1,0},{0,0,1}};
+    Offset = {0,0,0};
+    PreTransforms = {&.STLTransform, &.ReverseTransform};
+  };
+  
+  AnyFunTransform3DLin Transform1 = {
+    ScaleMat = {{1,0,0},{0,1,0},{0,0,1}};
+    Offset = {0,0,0};
+    PreTransforms = {&.STLTransform};
+  };
+  
+  
+  AnyFunTransform3DLin2 AffineTransform = {
+    Points0 = .PointsAffine0;
+    Points1 = .PointsAffine1;
+    Mode = VTK_LANDMARK_AFFINE;
+  };
+  
+  AnyFunTransform3DLin2 ReverseTransform = {
+    Points0 = .AffineTransform.Points1;
+    Points1 = .AffineTransform.Points0;
+    Mode = VTK_LANDMARK_RIGIDBODY;
+  };
+  
+  AnyFunTransform3DRBF RBFTransform = {
+    PreTransforms = {&.AffineTransform};
+    PolynomDegree = 1;
+    RBFDef = {
+      Type = RBF_Triharmonic;
+//      Type = RBF_MultiQuadratic ;
+      Param = 1;
+    };
+    
+    Points0 = .PointsRBF0;
+    PointNames = .PointsName0;
+    Points1 = .PointsRBF1;
+
+    BoundingBox = {
+      Type = BB_Cartesian;
+      ScaleXYZ = {2, 2, 2};
+      DivisionFactorXYZ = 5*{1, 1, 1};
+    };
+    BoundingBoxOnOff = On;
+  };
+  
+  AnyFunTransform3DSTL STLTransform = {
+    PreTransforms = {&.RBFTransform};
+    PolynomDegree = 1;
+    RBFDef.Type = RBF_Triharmonic;
+//    RBFDef.Type = RBF_MultiQuadratic ;
+    FileName0 = "..\..\..\..\Body\STL Models\Humerus\SourceHumerus.stl";
+    //ScaleXYZ0 = {1, 1, 1};
+    FileName1 = "..\..\..\..\Body\STL Models\Humerus\TargetHumerus.stl";
+    ScaleXYZ1 = {1, 1, 1}*1;
+    NumPoints = 1002;
+    BoundingBox.ScaleXYZ = {2, 2, 2};
+    BoundingBox.DivisionFactorXYZ = {1, 1, 1};
+    BoundingBoxOnOff = On;
+  };
+  
+};  // MyScalingLaw
+

@@ -1,0 +1,6 @@
+load "../ContactModel.Main.any" 
+operation Main.Study.InitialConditions 
+run 
+classoperation Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.DrwSurfRes "Export surface" --file= "D:\ResultsScales\OsScales\scapula.stl" --scale="1000" --reference="global" 
+classoperation Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.HumerusBoneGeometryNode.DrwSurfRes "Export surface" --file= "D:\ResultsScales\OsScales\humerus.stl" --scale="1000" --reference="global" 
+exit 

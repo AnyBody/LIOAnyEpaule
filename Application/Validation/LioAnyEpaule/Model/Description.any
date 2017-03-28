@@ -1,0 +1,65 @@
+/* ------------------ LIOANYSHOULDER MODEL ------------------
+
+The LioAnyShoulder (FR: LioAnyEpaule) model consists in an inverse dynamic
+musculoskeletal model of shoulder. This model was developed in the objective to
+be used for non-conforming total shoulder arthroplasty (NC-TSA) evaluation.
+Development, verification and validation of this model was one of the objectives
+of PhD study. Results of development and validation published at Journal of
+Biomechanical Engineering: Sins L, Tétreault P, Hagemeister N, Nuño N.
+Adaptation of the AnyBody™ Musculoskeletal Shoulder Model to the Nonconforming
+Total Shoulder Arthroplasty Context. ASME. J Biomech Eng.
+2015;137(10):101006-101006-7. doi:10.1115/1.4031330. Online:
+http://biomechanical.asmedigitalcoll...&resultClick=3
+
+NB: Due to copyright restrictions, the glenoid and humeral components files are
+not the same than the one used in the published paper. The provided stl models
+are CAO custom made models, that do not correspond to any commercialy availade
+implant. For this reason, results when using the model "as is" will necessarily
+be different.
+
+Satisfied Requirements: 
+R1. AnyEpaule must be a musculoskeletal numerical model of the shoulder joint.
+R2. AnyEpaule must use the AnyBody Modeling System (AnyBody Technology, Aalborg, Denmark)
+    to provide results, based on inverse dynamic analysis computation.
+R3. AnyEpaule must compute muscular forces and/or joint reaction force and/or
+    pressure parameters (pressure, center of pressure, contact area) and/or
+    articular positions, etc.
+R4. AnyEpaule must be developed in accordance to existing models in the AnyBody 
+    Managed Model Repository (AMMR), for which the version will be specified.
+R5. AnyEpaule must be a complete model, i.e. composed of functions:
+      - to model bones (segments), muscles and joints of human upper limb
+      - to simulate arm movements (kinematic drivers)
+      - to compute musculoskeletal analysis, described in R3.
+R6. AnyEpaule must contain 3D models to ensure a sufficient representation
+    (bones, prosthetic components). The 3D models must be readable in the
+    AnyBodyTM software.      
+
+Literature used for model validation includes, but is not restricted to, the following papers:
+[1] G. Bergmann, F. Graichen, A. Bender, M. K ®a ®ab, A. Rohlmann, P. Westerhoff, and A. Beier. In vivo glenohumeral contact forcesóMeasurements in the first patient 7 months postoperatively. Journal of Biomechanics, 40(10):2139-2149, Jan. 2007.
+[2] G. Bergmann, F. Graichen, A. Bender, A. Rohlmann, A. M. Halder, A. Beier, and P. Westerhoff. In vivo gleno-humeral joint loads during forward flexion and abduction. Journal of Biomechanics, 44(8):1543- 1552, May 2011.
+[3] M. J. Bey, S. K. Kline, R. Zauel, T. R. Lock, and P. a. Kolowich. Measuring dynamic in-vivo gleno- humeral joint kinematics: technique and preliminary results. Journal of Biomechanics, 41(3):711-714, 2008.
+[4] M. J. Bey, C. D. Peltz, K. Ciarelli, S. K. Kline, G. W. Divine, M. van Holsbeeck, S. Muh, P. a. Kolowich, T. R. Lock, and V. Moutzouros. In vivo shoulder function after surgical repair of a torn rotator cuff: glenohumeral joint mechanics, shoulder strength, clinical outcomes, and their interaction. The American journal of sports medicine, 39(10):2117-2129, Oct. 2011.
+[5] P. Buchler, N. A. Ramaniraka, L. R. Rakotomanana, J. P. Iannotti, and A. Farron. A finite element model of the shoulder: application to the comparison of normal and osteoarthritic joints. 17(9-10):630- 639, Nov. 2002.
+[6] I. W. Charlton and G. R. Johnson. A model for the prediction of the forces at the glenohumeral joint. Proceedings of the Institution of Mechanical Engineers, Part H: Journal of Engineering in Medicine, 220(8):801-812, Jan. 2006.
+[7] P. Favre, J. G. Snedeker, and C. Gerber. Numerical modelling of the shoulder for clinical applications. Philosophical transactions. Series A, Mathematical, physical, and engineering sciences, 367(1895):2095- 2118, May 2009.
+[8] R. J. Friedman. Glenohumeral translation after total shoulder arthroplasty. Journal of shoulder and elbow surgery, 1(6):312-316, Nov. 1992.
+[9] G. Hammond, J. E. Tibone, M. H. McGarry, B. J. Jun, and T. Q. Lee. Biomechanical Comparison of Anatomic Humeral Head Resurfacing and Hemiarthroplasty in Functional Glenohumeral Positions. 94(1):68-76, 2012.
+[10] A. R. Hopkins, U. Hansen, A. Amis, L. Knight, M. Taylor, O. Levy, and S. A. Copeland. Wear in the prosthetic shoulder: association with design parameters. Journal of Biomechanical Engineering, 129(2):223-230, Apr. 2007.
+[11] D. F. Massimini, G. Li, and J. J. P. Warner. Glenohumeral contact kinematics in patients after total shoulder arthroplasty. Journal of bone and joint surgery. American volume, 92(4):916-926, Apr. 2010.
+[12] A. A. Nikooyan, D. H. E. J. Veeger, P. Westerhoff, F. Graichen, G. Bergmann, F. C. T. van der Helm, A. Beier, A. Bender, and A. Rohlmann. Validation of the Delft Shoulder and Elbow Model using in-vivo glenohumeral joint contact forces. Journal of Biomechanics, 43(15):3007-3014, Nov. 2010.
+[13] N. K. Poppen and P. S. Walker. Forces at the glenohumeral joint in abduction. 135:165-170, 1978.
+[14] J. Rasmussen. Validation of the AnyBody version of the Dutch Shoulder Model. Technical report, 2007.
+[15] L. J. Soslowsky, E. L. Flatow, P. Bigras, R. J. Pawluk, G. A. Ateshian, and V. C. Mow. Quantitation of in situ contact areas at the glenohumeral joint: a biomechanical study. Journal of Orthopaedic Research, 10(4):524-534, July 1992.
+[16] A. Terrier, A. Vogel, M. Capezzali, and A. Farron. An algorithm to allow humerus translation in the indeterminate problem of shoulder abduction. 30:710-716, 2008.
+[17] F. C. T. van der Helm. A finite element musculoskeletal model of the shoulder mechanism. Journal of Biomechanics, 27(5):551-569, May 1994.
+[18] P. Westerhoff, F. Graichen, A. Bender, A. M. Halder, A. Beier, A. Rohlmann, and G. Bergmann. In vivo measurement of shoulder joint loads during activities of daily living. Journal of Biomechanics, 42(12):1840-1849, Aug. 2009.
+[19] N. Wuelker, H. Schmotzer, K. Thren, and M. Korell. Translation of the glenohumeral joint with simulated active elevation. (309):193-200, 1994.
+[20] J. Zhang, C. Yongpravat, H. M. Kim, W. N. Levine, L. U. Bigliani, T. R. Gardner, and C. S. Ah- mad. Glenoid articular conformity affects stress distributions in total shoulder arthroplasty. Journal of shoulder and elbow surgery, 22(3):350-356, Mar. 2013.
+
+Author:     Lauranne Sins
+Instituion: Laboratoire de recherche en Imagerie et Orthopedie (LIO, Montreal (QC), Canada)
+Version:    1.0
+Date:       09/2015
+----------------------------------------------------------- */
+
+Main ={};

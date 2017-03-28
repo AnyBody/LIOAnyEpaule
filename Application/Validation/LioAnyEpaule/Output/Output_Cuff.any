@@ -1,0 +1,407 @@
+// MEASURE OF FORCES AND MOMENTS
+AnyFolder ForceMomentMeasure={
+  // Supraspinatus
+  #if SupraOnOff==1
+    AnyForceMomentMeasure2 ForceMomentSS = {
+      AnyRefFrame &ref= ....ForceRefFrame;
+      
+      AnySeg &seg0= ....Seg.Humerus;  
+      
+      AnyForceBase &mus1  = ....Mus.supraspinatus_1; 
+      AnyForceBase &mus2  = ....Mus.supraspinatus_2; 
+      AnyForceBase &mus3  = ....Mus.supraspinatus_3; 
+      AnyForceBase &mus4  = ....Mus.supraspinatus_4; 
+      AnyForceBase &mus5  = ....Mus.supraspinatus_5; 
+      AnyForceBase &mus6  = ....Mus.supraspinatus_6; 
+    };  
+  #endif
+  
+  
+  // Infraspinatus
+  #if InfraOnOff==1
+    AnyForceMomentMeasure2 ForceMomentIS = {
+      AnyRefFrame &ref= ....ForceRefFrame;
+      
+      AnySeg &seg0= ....Seg.Humerus;  
+      
+      AnyForceBase &mus1  = ....Mus.infraspinatus_1; 
+      AnyForceBase &mus2  = ....Mus.infraspinatus_2; 
+      AnyForceBase &mus3  = ....Mus.infraspinatus_3; 
+      AnyForceBase &mus4  = ....Mus.infraspinatus_4; 
+      AnyForceBase &mus5  = ....Mus.infraspinatus_5; 
+      AnyForceBase &mus6  = ....Mus.infraspinatus_6; 
+    };  
+  #endif
+  
+  // Subscapularis
+  #if Tear != 4
+    AnyForceMomentMeasure2 ForceMomentSUB = {
+      AnyRefFrame &ref= ....ForceRefFrame;
+      
+      AnySeg &seg0= ....Seg.Humerus;  
+      
+      #if SubOnOff ==1
+        AnyForceBase &mus1  = ....Mus.subscapularis_1; 
+        AnyForceBase &mus2  = ....Mus.subscapularis_2; 
+        AnyForceBase &mus3  = ....Mus.subscapularis_3; 
+        AnyForceBase &mus4  = ....Mus.subscapularis_4; 
+      #endif
+  
+      AnyForceBase &mus5  = ....Mus.subscapularis_5; 
+      AnyForceBase &mus6  = ....Mus.subscapularis_6;
+    };
+  #endif
+    
+  // Teres Minor
+  AnyForceMomentMeasure2 ForceMomentTM = {
+    AnyRefFrame &ref= ....ForceRefFrame;
+    
+    AnySeg &seg0= ....Seg.Humerus;  
+    
+    AnyForceBase &mus1  = ....Mus.teres_minor_1; 
+    AnyForceBase &mus2  = ....Mus.teres_minor_2; 
+    AnyForceBase &mus3  = ....Mus.teres_minor_3; 
+    AnyForceBase &mus4  = ....Mus.teres_minor_4; 
+    AnyForceBase &mus5  = ....Mus.teres_minor_5; 
+    AnyForceBase &mus6  = ....Mus.teres_minor_6; 
+  };
+};
+ 
+// MUSCULAR ACTIVITY, FORCE, POWER, STRENGTH, AND LEVER ARM FOR EACH CUFF MUSCLE
+// Supraspinatus
+#if SupraOnOff ==1
+AnyFolder SupraSpinatus = {
+  #if ActivityOutput == 1
+  AnyFolder Activity = { 
+    AnyVar A1 = ....Mus.supraspinatus_1.Activity;
+    AnyVar A2 = ....Mus.supraspinatus_2.Activity;
+    AnyVar A3 = ....Mus.supraspinatus_3.Activity;
+    AnyVar A4 = ....Mus.supraspinatus_4.Activity;
+    AnyVar A5 = ....Mus.supraspinatus_5.Activity;
+    AnyVar A6 = ....Mus.supraspinatus_6.Activity;          
+  };     
+  #endif
+  
+  #if ForcesOutput == 1
+  AnyFolder Force = { 
+    AnyVar F1 = ....Mus.supraspinatus_1.Ft;
+    AnyVar F2 = ....Mus.supraspinatus_2.Ft;
+    AnyVar F3 = ....Mus.supraspinatus_3.Ft;
+    AnyVar F4 = ....Mus.supraspinatus_4.Ft;
+    AnyVar F5 = ....Mus.supraspinatus_5.Ft;
+    AnyVar F6 = ....Mus.supraspinatus_6.Ft;
+  };
+  #endif
+  
+  #if MomentOutput == 1
+  AnyFolder Somme = { 
+    AnyVec3 Mss = ..ForceMomentMeasure.ForceMomentSS.M;
+    AnyVec3 Fss = ..ForceMomentMeasure.ForceMomentSS.M* ..ForceMomentMeasure.ForceMomentSS.ref.Axes;
+  };
+  #endif
+  
+  #if PowerOutput == 1
+  AnyFolder Power = { 
+    AnyVar P1 = ....Mus.supraspinatus_1.Pm;
+    AnyVar P2 = ....Mus.supraspinatus_2.Pm;
+    AnyVar P3 = ....Mus.supraspinatus_3.Pm;
+    AnyVar P4 = ....Mus.supraspinatus_4.Pm;
+    AnyVar P5 = ....Mus.supraspinatus_5.Pm;
+    AnyVar P6 = ....Mus.supraspinatus_6.Pm;
+  };
+  #endif
+  
+  #if StrengthOutput== 1
+  AnyFolder Strength= { 
+    AnyVar S1 = ....Mus.supraspinatus_1.Strength;
+    AnyVar S2 = ....Mus.supraspinatus_2.Strength;
+    AnyVar S3 = ....Mus.supraspinatus_3.Strength;
+    AnyVar S4 = ....Mus.supraspinatus_4.Strength;
+    AnyVar S5 = ....Mus.supraspinatus_5.Strength;
+    AnyVar S6 = ....Mus.supraspinatus_6.Strength;
+  };
+  #endif
+  
+  #if LmtOutput == 1
+  AnyFolder Lmt= { 
+    AnyVar Lmt1 = ....Mus.supraspinatus_1.Lmt;
+    AnyVar Lmt2 = ....Mus.supraspinatus_2.Lmt;
+    AnyVar Lmt3 = ....Mus.supraspinatus_3.Lmt;
+    AnyVar Lmt4 = ....Mus.supraspinatus_4.Lmt;
+    AnyVar Lmt5= ....Mus.supraspinatus_5.Lmt;
+    AnyVar Lmt6= ....Mus.supraspinatus_6.Lmt;
+  };
+  #endif
+  
+  #if LeverArmOutput == 1
+  AnyFolder LeverArm = { 
+    AnyVar LA1 = -....Mus.supraspinatus_1.LmtDot/(...vel+1e-6);
+    AnyVar LA2 = -....Mus.supraspinatus_2.LmtDot/(...vel+1e-6);
+    AnyVar LA3 = -....Mus.supraspinatus_3.LmtDot/(...vel+1e-6);
+    AnyVar LA4 = -....Mus.supraspinatus_4.LmtDot/(...vel+1e-6);
+    AnyVar LA5 = -....Mus.supraspinatus_5.LmtDot/(...vel+1e-6);
+    AnyVar LA6 = -....Mus.supraspinatus_6.LmtDot/(...vel+1e-6);
+  };
+  #endif
+};
+#endif
+
+// ---------------------------------------------------
+// Infraspinatus
+#if InfraOnOff==1
+  AnyFolder InfraSpinatus = {
+    #if ActivityOutput == 1
+    AnyFolder Activity = { 
+      AnyVar A1 = ....Mus.infraspinatus_1.Activity;
+      AnyVar A2 = ....Mus.infraspinatus_2.Activity;
+      AnyVar A3 = ....Mus.infraspinatus_3.Activity;
+      AnyVar A4 = ....Mus.infraspinatus_4.Activity;
+      AnyVar A5 = ....Mus.infraspinatus_5.Activity;
+      AnyVar A6 = ....Mus.infraspinatus_6.Activity;
+    };     
+    #endif
+    
+    #if ForcesOutput == 1
+    AnyFolder Force = { 
+      AnyVar F1 = ....Mus.infraspinatus_1.Ft;
+      AnyVar F2 = ....Mus.infraspinatus_2.Ft;
+      AnyVar F3 = ....Mus.infraspinatus_3.Ft;
+      AnyVar F4 = ....Mus.infraspinatus_4.Ft;
+      AnyVar F5 = ....Mus.infraspinatus_5.Ft;
+      AnyVar F6 = ....Mus.infraspinatus_6.Ft;
+    };
+    #endif
+    
+    #if MomentOutput == 1
+    AnyFolder Somme = { 
+      AnyVec3 Mis = ..ForceMomentMeasure.ForceMomentIS.M;
+      AnyVec3 Fis = ..ForceMomentMeasure.ForceMomentIS.M* ..ForceMomentMeasure.ForceMomentIS.ref.Axes;
+    };
+    #endif
+    
+    #if PowerOutput == 1
+    AnyFolder Power = { 
+      AnyVar P1 = ....Mus.infraspinatus_1.Pm;
+      AnyVar P2 = ....Mus.infraspinatus_2.Pm;
+      AnyVar P3 = ....Mus.infraspinatus_3.Pm;
+      AnyVar P4 = ....Mus.infraspinatus_4.Pm;
+      AnyVar P5 = ....Mus.infraspinatus_5.Pm;
+      AnyVar P6 = ....Mus.infraspinatus_6.Pm;
+    };
+    #endif
+    
+    #if StrengthOutput== 1
+    AnyFolder Strength= { 
+      AnyVar S1 = ....Mus.infraspinatus_1.Strength;
+      AnyVar S2 = ....Mus.infraspinatus_2.Strength;
+      AnyVar S3 = ....Mus.infraspinatus_3.Strength;
+      AnyVar S4 = ....Mus.infraspinatus_4.Strength;
+      AnyVar S5 = ....Mus.infraspinatus_5.Strength;
+      AnyVar S6 = ....Mus.infraspinatus_6.Strength;
+    };
+    #endif
+    
+    #if LmtOutput == 1
+    AnyFolder Lmt= { 
+      AnyVar Lmt1 = ....Mus.infraspinatus_1.Lmt;
+      AnyVar Lmt2 = ....Mus.infraspinatus_2.Lmt;
+      AnyVar Lmt3 = ....Mus.infraspinatus_3.Lmt;
+      AnyVar Lmt4 = ....Mus.infraspinatus_4.Lmt;
+      AnyVar Lmt5 = ....Mus.infraspinatus_5.Lmt;
+      AnyVar Lmt6 = ....Mus.infraspinatus_6.Lmt;
+    };
+    #endif
+    
+    #if LeverArmOutput == 1
+    AnyFolder LeverArm = { 
+      AnyVar LA1 = -....Mus.infraspinatus_1.LmtDot/(...vel+1e-6);
+      AnyVar LA2 = -....Mus.infraspinatus_2.LmtDot/(...vel+1e-6);
+      AnyVar LA3 = -....Mus.infraspinatus_3.LmtDot/(...vel+1e-6);
+      AnyVar LA4 = -....Mus.infraspinatus_4.LmtDot/(...vel+1e-6);
+      AnyVar LA5 = -....Mus.infraspinatus_5.LmtDot/(...vel+1e-6);
+      AnyVar LA6 = -....Mus.infraspinatus_6.LmtDot/(...vel+1e-6);
+    };
+    #endif
+  };
+#endif
+
+// ---------------------------------------------------
+// Subscapularis
+#if Tear != 4
+  AnyFolder SubScapularis= {
+    #if ActivityOutput == 1
+    AnyFolder Activity = { 
+      #if SubOnOff ==1
+        AnyVar A1 = ....Mus.subscapularis_1.Activity;
+        AnyVar A2 = ....Mus.subscapularis_2.Activity;
+        AnyVar A3 = ....Mus.subscapularis_3.Activity;
+        AnyVar A4 = ....Mus.subscapularis_4.Activity;
+      #endif
+
+      AnyVar A5 = ....Mus.subscapularis_5.Activity;
+      AnyVar A6 = ....Mus.subscapularis_6.Activity;
+    };     
+    #endif
+    
+    #if ForcesOutput == 1
+    AnyFolder Force = { 
+      #if SubOnOff ==1
+        AnyVar F1 = ....Mus.subscapularis_1.Ft;
+        AnyVar F2 = ....Mus.subscapularis_2.Ft;
+        AnyVar F3 = ....Mus.subscapularis_3.Ft;
+        AnyVar F4 = ....Mus.subscapularis_4.Ft;
+      #endif
+
+      AnyVar F5 = ....Mus.subscapularis_5.Ft;
+      AnyVar F6 = ....Mus.subscapularis_6.Ft;
+    };
+    #endif
+    
+    #if MomentOutput == 1
+    AnyFolder Somme = { 
+      AnyVec3 Msub = ..ForceMomentMeasure.ForceMomentSUB.M;
+      AnyVec3 Fsub = ..ForceMomentMeasure.ForceMomentSUB.M* ..ForceMomentMeasure.ForceMomentSUB.ref.Axes;
+    };
+    #endif
+    
+    
+    #if PowerOutput == 1
+    AnyFolder Power = { 
+      #if SubOnOff ==1
+        AnyVar P1 = ....Mus.subscapularis_1.Pm;
+        AnyVar P2 = ....Mus.subscapularis_2.Pm;
+        AnyVar P3 = ....Mus.subscapularis_3.Pm;
+        AnyVar P4 = ....Mus.subscapularis_4.Pm;
+      #endif  
+
+      AnyVar P5 = ....Mus.subscapularis_5.Pm;
+      AnyVar P6 = ....Mus.subscapularis_6.Pm;
+    };
+    #endif
+    
+    #if StrengthOutput== 1
+    AnyFolder Strength= { 
+      #if SubOnOff ==1
+        AnyVar S1 = ....Mus.subscapularis_1.Strength;
+        AnyVar S2 = ....Mus.subscapularis_2.Strength;      
+        AnyVar S3 = ....Mus.subscapularis_3.Strength;
+        AnyVar S4 = ....Mus.subscapularis_4.Strength;
+      #endif
+      
+      AnyVar S5 = ....Mus.subscapularis_5.Strength;
+      AnyVar S6 = ....Mus.subscapularis_6.Strength;
+    };
+    #endif
+    
+    #if LmtOutput == 1
+    AnyFolder Lmt= { 
+      #if SubOnOff ==1
+        AnyVar Lmt1 = ....Mus.subscapularis_1.Lmt;
+        AnyVar Lmt2 = ....Mus.subscapularis_2.Lmt;
+        AnyVar Lmt3 = ....Mus.subscapularis_3.Lmt;
+        AnyVar Lmt4 = ....Mus.subscapularis_4.Lmt;
+      #endif
+
+      AnyVar Lmt5 = ....Mus.subscapularis_5.Lmt;
+      AnyVar Lmt6 = ....Mus.subscapularis_6.Lmt;
+    };
+    #endif
+    
+    #if LeverArmOutput == 1
+    AnyFolder LeverArm = { 
+      #if SubOnOff ==1
+        AnyVar LA1 = -....Mus.subscapularis_1.LmtDot/(...vel+1e-6);
+        AnyVar LA2 = -....Mus.subscapularis_2.LmtDot/(...vel+1e-6);
+        AnyVar LA3 = -....Mus.subscapularis_3.LmtDot/(...vel+1e-6);
+        AnyVar LA4 = -....Mus.subscapularis_4.LmtDot/(...vel+1e-6);
+      #endif
+
+      AnyVar LA5 = -....Mus.subscapularis_5.LmtDot/(...vel+1e-6);
+      AnyVar LA6 = -....Mus.subscapularis_6.LmtDot/(...vel+1e-6);
+    };
+    #endif
+  };
+#endif
+
+// ---------------------------------------------------
+// Teres Minor
+AnyFolder TeresMinor= {
+  #if ActivityOutput == 1
+  AnyFolder Activity = { 
+    AnyVar A1 = ....Mus.teres_minor_1.Activity;
+    AnyVar A2 = ....Mus.teres_minor_2.Activity;
+    AnyVar A3 = ....Mus.teres_minor_3.Activity;
+    AnyVar A4 = ....Mus.teres_minor_4.Activity;
+    AnyVar A5 = ....Mus.teres_minor_5.Activity;
+    AnyVar A6 = ....Mus.teres_minor_6.Activity;
+  };     
+  #endif
+  
+  #if ForcesOutput == 1
+  AnyFolder Force = { 
+    AnyVar F1 = ....Mus.teres_minor_1.Ft;
+    AnyVar F2 = ....Mus.teres_minor_2.Ft;
+    AnyVar F3 = ....Mus.teres_minor_3.Ft;
+    AnyVar F4 = ....Mus.teres_minor_4.Ft;
+    AnyVar F5 = ....Mus.teres_minor_5.Ft;
+    AnyVar F6 = ....Mus.teres_minor_6.Ft;
+  };
+  #endif
+  
+  #if MomentOutput == 1
+  AnyFolder Somme = { 
+    AnyVec3 Mtm = ..ForceMomentMeasure.ForceMomentTM.M;
+    AnyVec3 Ftm = ..ForceMomentMeasure.ForceMomentTM.M* ..ForceMomentMeasure.ForceMomentTM.ref.Axes;
+  };
+  #endif
+  
+  #if PowerOutput == 1
+  AnyFolder Power = { 
+    AnyVar P1 = ....Mus.teres_minor_1.Pm;
+    AnyVar P2 = ....Mus.teres_minor_2.Pm;
+    AnyVar P3 = ....Mus.teres_minor_3.Pm;
+    AnyVar P4 = ....Mus.teres_minor_4.Pm;
+    AnyVar P5 = ....Mus.teres_minor_5.Pm;
+    AnyVar P6 = ....Mus.teres_minor_6.Pm;
+  };
+  #endif
+  
+  #if StrengthOutput== 1
+  AnyFolder Strength= { 
+    AnyVar S1 = ....Mus.teres_minor_1.Strength;
+    AnyVar S2 = ....Mus.teres_minor_2.Strength;
+    AnyVar S3 = ....Mus.teres_minor_3.Strength;
+    AnyVar S4 = ....Mus.teres_minor_4.Strength;
+    AnyVar S5 = ....Mus.teres_minor_5.Strength;
+    AnyVar S6 = ....Mus.teres_minor_6.Strength;
+  };
+  #endif
+  
+  #if LmtOutput == 1
+  AnyFolder Lmt= { 
+    AnyVar Lmt1 = ....Mus.teres_minor_1.Lmt;
+    AnyVar Lmt2 = ....Mus.teres_minor_2.Lmt;
+    AnyVar Lmt3 = ....Mus.teres_minor_3.Lmt;
+    AnyVar Lmt4 = ....Mus.teres_minor_4.Lmt;
+    AnyVar Lmt5 = ....Mus.teres_minor_5.Lmt;
+    AnyVar Lmt6 = ....Mus.teres_minor_6.Lmt;
+  };
+  #endif
+  
+  #if LeverArmOutput == 1
+  AnyFolder LeverArm = { 
+    AnyVar LA1 = -....Mus.teres_minor_1.LmtDot/(...vel+1e-6);
+    AnyVar LA2 = -....Mus.teres_minor_2.LmtDot/(...vel+1e-6);
+    AnyVar LA3 = -....Mus.teres_minor_3.LmtDot/(...vel+1e-6);
+    AnyVar LA4 = -....Mus.teres_minor_4.LmtDot/(...vel+1e-6);
+    AnyVar LA5 = -....Mus.teres_minor_5.LmtDot/(...vel+1e-6);
+    AnyVar LA6 = -....Mus.teres_minor_6.LmtDot/(...vel+1e-6);
+  };
+  #endif
+  
+};
+
+
+
+
+

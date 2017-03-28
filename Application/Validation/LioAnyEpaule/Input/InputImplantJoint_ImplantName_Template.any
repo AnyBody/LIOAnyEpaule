@@ -1,0 +1,67 @@
+/* INPUTIMPLANTJOINT_IMPLANTNAME.ANY
+Parameters to set implants and joint parameters:
+  - Implants names
+  - Implants positions (!!Must be calculated outside AnyBody!!). cf "Seg.any" for more information
+      - Humeral head (HH) implant position: transform matrix HH_CoordinateSystem to HumerusBoneGeometryNode
+      - Glenoid implant position: transform matrix Glenoid_CoordinateSystem to GlenImplantPos
+
+NB: this file is a template:
+  - It should not be modified 
+  - The template should be duplicated and new file should be saved with specific name to replace "ImplantName_Template"
+
+Author: Lauranne Sins, LIO Montréal (QC)
+Date: 09-2015
+Model - Version: LioAnyShoulder - v1.0
+*/
+
+/* -------- IMPLANTS -------- 
+Names and positions of humeral head and glenoid components
+GH joint position (depends on the chosen implants !)
+----------------------------- */
+AnyFolder &InputVar1=Main.InputVariables;
+
+InputVar1={
+  AnyFolder ImplantParameters = {
+    
+    // FILENAMES
+    // Be sure that STL Models are in the folder "..\Body\STLModels\ImplantModels"
+    // If in subfolder, specify subfolder names
+    AnyFolder ImplantNames = {
+      AnyString HumerusName = "Tete";
+      AnyString GlenoidName = "Glene";
+    };
+    
+    // HUMERAL IMPLANT POSITION/ORIENTATION
+    // From HumerusBoneGeometryNode to the humeral head component Coordinate System (on 3d model)
+    AnyFolder HumPosition = {
+      AnyVec3 Position = 0.001*{0,0,0};
+      AnyMat33 Rotation = {
+        {1, 0, 0},
+        {0, 1, 0},
+        {0, 0, 1}
+      };
+    };
+    
+    // GLENOID IMPLANT POSITION/ORIENTATION
+    // From Scapula to glenoid component Coordinate System (on 3d model)
+    AnyFolder GlenPosition = {
+      AnyVec3 Position = 0.001*{0,0,0};
+      AnyMat33 Rotation = {
+        {1, 0, 0},
+        {0, 1, 0},
+        {0, 0, 1}
+      };
+    };
+  };
+  
+  // GH JOINT POSITION
+  // To adjust to have small contact between humeral head and glenoid components after the "InitialCondition" step
+  AnyFolder JointPosition = {
+    AnyVar px =0.0;     //AP : Anterieur = +   
+    AnyVar py =0.0;     //IS : Superieur = +  
+    AnyVar pz =0.0;     //ML : Lateral = +
+  };
+  
+};
+
+

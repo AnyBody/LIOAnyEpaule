@@ -1,0 +1,42 @@
+/* LOADFILES.ANY
+Load the needed files depending the model configuration set in the InputVariables.any
+Should not be modified.
+
+Author:     Lauranne Sins
+Instituion: Laboratoire de recherche en Imagerie et Orthopedie (LIO, Montreal (QC), Canada)
+Version:    1.0
+Date:       09/2015
+*/
+
+#include "../Model/TearVariables.any" 
+
+// IMPLANTS Position & Name: Call to custom file based on template "InputPosition_ImplantName.any"
+#path INPUTPOSFILE "../Input/InputImplantJoint_" + INPUTPOS + ".any"
+#include "<INPUTPOSFILE>" 
+
+// CAMERA: view to GH joint reaction force
+#if Camera==1
+  #include "../Output/Camera.any"
+#endif
+
+// Use with the software "AppEpaule" (module in PG-Epaule)
+#include "../Scaling\SequenceScale.any"
+
+// PATIENT SPECIFIC
+// 1- Method: CT-Scan based
+#if scale ==1 
+  #define BM_SCALING CONST_SCALING_STANDARD
+  #include "../Scaling\CustomScaling.any"
+#endif
+
+// Also used for the case InterfaceEpaule == 1 (automatic set to scale==2)
+// 2- Method: Anatomical landmarks
+#if scale ==2
+  #define BM_SCALING CONST_SCALING_LENGTHMASSFAT_EXTMEASUREMENTS 
+  #path BM_SCALING_ANTHRO_FILE "../Scaling\AnyManExternalUpperBody.any"
+#endif
+
+// Custom sequence to launch study using the "AppEpaule" software (module in PG-Epaule)
+#include "RunAppEpaule.any"
+
+

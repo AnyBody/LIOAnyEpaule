@@ -1,0 +1,10 @@
+*/ READ ME - Results
+This folder is the default folder where results files will be stored. 
+
+It can be modified in the file "InputVariables.any" (folder "Input", same path than the main). The variables to change are the following:
+1-Modification of the folder name: m_ResultFolder
+2- Modification of the path: m_ResultPath
+
+The files entitled "20151010-LIOAnyShoulder_Verification.txt" and "20151010-LIOAnyShoulder_Verification.anydata.h5" are the results you should obtain if you do not modify anything to the model.
+
+NB: To use the .txt result file in Matlab, be sure the decimal symbol in your windows system (1/ Windows Start button of the Start button, clicking Control Panel, 2/ clicking Clock, Language, and Region, and then 3/ clicking Region and Language)

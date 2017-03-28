@@ -1,0 +1,116 @@
+/* LOADVALUES.ANY
+In this file : 
+  - Option for visual purposes (used for development...)
+  - Option for output *.txt file
+  - Options related to joint and muscles : SHR, muscle type, scale strength (1 = same values as the BergmannGH model (AMMR1.6.2)
+  
+  - Options for model type:
+      + If the model is used as it's intented (i.e. to simulate NC-TSA with humeral head and translations), this file should not be modified.
+      + If you want to use the same model as the BergmannGH proposed by AnyBodyTech (AMMR 1.6.2), you should modify some parameters in this file.
+
+Author:     Lauranne Sins
+Instituion: Laboratoire de recherche en Imagerie et Orthopedie (LIO, Montreal (QC), Canada)
+Version:    1.0
+Date:       09/2015
+*/
+
+AnyFolder &InputVar2=Main.InputVariables;
+
+InputVar2={
+  AnyFolder SettingValues = {
+    /* -- DEV & VISUAL PURPOSES -- 
+      ShowNodes (0/1) - Hide/Show muscular insertion nodes
+      dev (0/1)       - Hide/Show all bones (source, target, morphed). To use with scale==1. Dev purpose only
+    ----------------------------- */
+    #define ShowNodes 0
+    #define dev 0
+    
+    
+    /* --------- GH JOINT --------- 
+      0- Ball and Socket joint: 3 dof; cf Bergmann Model
+      1- Translations: 5 dof
+    ----------------------------- */
+    #define BallAndSocket 0
+    
+    
+    /* - FORCE-DEPENDENT KINEMATICS - 
+      Non-linear model [Bigliani, 1992]:
+      F = k0 + k1*eps + k2*eps^2 + k4*eps^4
+    ----------------------------- */
+    AnyFolder FDK ={      
+      AnyVar k0 = 10.75;   
+      AnyVar k1 = -7.787;  
+      AnyVar k2 = 4.391;
+      AnyVar k3 = 0 ;
+      AnyVar k4 = -0.08637 ; 
+      AnyVar kz = 0;   //ML (Lat=+). NB: ML managed by contact between prosthetic components
+    };
+    
+    /* --------- CONTACT ---------
+    stl: set option
+    kd:  Spring stiffness for contact algorithm (defined in JntSR.any (AnyForceSurfaceContact ProtheseContact))
+    ----------------------------- */
+    #ifndef stl
+      #define stl 1
+    #endif
+  
+    AnyFolder Contact ={
+      AnyVar kd =1e10;
+    };
+
+  
+  /* ----- BODY PARAMETERS -----
+  To modify ONLY if you know what you do !
+  BM_ARM_SHOULDER_RHYTHM_RIGHT : Shoulder ryhthm. Set to ON by default
+  BM_ARM_MUSCLES_RIGHT         : Muscles type. CONST_MUSCLES_3E_HILL by default (used for validation)
+  ScaleStrengthMuscle          : Folder to scale strength muscles 
+  ----------------------------- */
+  #define BM_ARM_SHOULDER_RHYTHM_RIGHT ON
+  #define BM_ARM_MUSCLES_RIGHT CONST_MUSCLES_3E_HILL  
+  
+  AnyFolder ScaleStrengthMuscle ={
+    AnyVar S_DeltoidAnt =1;
+    AnyVar S_DeltoidMid =1;
+    AnyVar S_DeltoidPost =1;
+    AnyVar S_Infra =1;
+    AnyVar S_Supra =1;
+    AnyVar S_Sub =1;
+  };
+
+  
+  /* ----- OUTPUT PARAMETERS -----
+  Parameters to include output values in the .txt results file.
+  All values set to 1 by default
+  ----------------------------- */
+  #ifndef ActivityOutput   
+    #define ActivityOutput   1
+  #endif
+  #ifndef ForcesOutput     
+    #define ForcesOutput     1  
+  #endif
+  #ifndef MomentOutput     
+    #define MomentOutput     1
+  #endif
+  #ifndef PowerOutput      
+    #define PowerOutput      1
+  #endif
+  #ifndef LeverArmOutput   
+    #define LeverArmOutput   1
+  #endif
+  #ifndef StrengthOutput   
+    #define StrengthOutput   1
+  #endif
+  #ifndef LmtOutput        
+    #define LmtOutput        1
+  #endif
+  #ifndef DeltoidOutput    
+    #define DeltoidOutput    1
+  #endif
+  #ifndef CuffOutput       
+    #define CuffOutput       1
+  #endif
+
+  };
+};
+
+

@@ -1,0 +1,56 @@
+/* TEARVARIABLES.ANY
+Parameters to set cuff tears:
+    0 Healthy / No tear
+    1 Supraspinatus tear
+    2 Supraspinatus + infraspinatus tears
+    3 Massive tear: supra + infra + 2/3 subscap [Beidi, 2010]
+    4 Subscapularis tear (totale) [Blalock, 2012]
+    5 Subscapularis tear (2/3 sup)
+
+Author:     Lauranne Sins
+Instituion: Laboratoire de recherche en Imagerie et Orthopedie (LIO, Montreal (QC), Canada)
+Version:    1.0
+Date:       09/2015
+----------------------------- */
+  
+// Healthy
+#if Tear== 0
+  #define SupraOnOff 1
+  #define InfraOnOff 1
+  #define SubOnOff 1
+#endif
+  
+// Tear : supra
+#if Tear==1
+  #define SupraOnOff 0 
+  #define InfraOnOff 1
+  #define SubOnOff 1
+#endif
+
+// Tear : supra + infra
+#if Tear==2
+  #define SupraOnOff 0 
+  #define InfraOnOff 0 
+  #define SubOnOff 1 
+#endif
+  
+// Tear : supra + infra + 2/3 subscap (=Massive rotator cuff Tear (Bedi, 2010 + Lemieux, 2012)
+#if Tear==3
+  #define SupraOnOff 0 
+  #define InfraOnOff 0 
+  #define SubOnOff 0 
+#endif
+
+// Tear :subscap (COMPLETE) (Blalock, 2012)
+#if Tear==4
+  #define SupraOnOff 1 
+  #define InfraOnOff 1 
+  #define SubOnOff 0 
+#endif
+  
+// Tear : 2/3 subscap 
+#if Tear==5
+  #define SupraOnOff 1 
+  #define InfraOnOff 1 
+  #define SubOnOff 0 
+#endif

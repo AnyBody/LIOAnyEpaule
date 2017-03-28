@@ -1,0 +1,103 @@
+/* CAMERA.ANY
+File to automatically create and save images of each step during inverse dynamic simulation. Two options are available, that should be chosen/selected in the file "InputVaribales.any":
+    Vue == 1 : Global view, 45deg scapula
+    Vue == 2 : Fixed view, face to glenoid
+*/
+
+
+AnyFolder CameraDefs = {
+  AnyFolder PositionCam ={
+    AnyFixedRefFrame CamPos = {
+      Origin = {0.14, .4,0.2};  // (Ant, sup, lat)
+      Axes = RotMat(-pi/12,z);       
+//      AnyDrawRefFrame drw={
+//        ScaleXYZ={1,1,1}*0.06;
+//        RGB={0,0.2,0.2};
+//      };
+//      
+      AnyRefNode CamUp = {
+        sRel = {-0.02,0.2,0};
+      };
+    };    
+  };
+  
+  
+  AnySwitch Perspective = On;
+  AnySwitch Trig = On;
+  AnySwitch ResetTrig = Off;
+  
+  
+  AnyStringVar ImagePath = m_ResultPath + m_ResultFolder + "Img\\Camera" ; // Name of the folder where are stored the images (remember you have to create the folder before doing the record).
+  AnyStringVar ImageExt = "png";  // output format for the name of the output files
+  AnyIntVar pxWidth = 500;  //size of the output
+  AnyIntVar pxHeight= 500;  
+  
+  AnyScene scene = {
+    BackgroundColor = {0.9,0.9,0.94};
+  };
+  
+  // define a global camera pointing to the glenoid (about 45degres)
+  #if Vue==1
+    AnyCameraLookAt CamGlobal = {
+      
+      Perspective =.Perspective;
+      EyePoint = .PositionCam.CamPos.Origin  ;// location of the camera
+      LookAtPoint = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.GlenImplantPos.r;// point where the camera is looking at
+      UpPoint = .PositionCam.CamPos.CamUp.r; // define where is up
+      FocalDist = 0.075;    // the focal lenght of the camera
+      FocalHeight = .1*1.1;  
+      
+      AnyScene &scene = .scene;
+      
+      AnyDrawCamera drw = {
+        ScaleXYZ = {1,1,1};
+        Opacity = 0.5;
+        RGB = {0,0,0};
+      };
+      
+      AnyCamRecorder rec = {
+        FileName = ..ImagePath + m_ResultFile + "\\" + m_ResultFile + "." + strval(Counter,"%05i") + "." + ..ImageExt;
+        pxWidth = ..pxWidth ;
+        pxHeight = ..pxHeight;
+        Trig = ..Trig;
+        ResetTrig = ..ResetTrig;
+        
+      };
+      
+    };
+  #endif
+
+  // define a fixed camera to the glenoid (face)
+  #if Vue==2
+    AnyCameraLookAt CamGlen= {
+      
+      Perspective =.Perspective;
+      EyePoint = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh.ghProth.CamPos.r ;// location of the camera
+      LookAtPoint = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.GlenImplantPos.r;// point where the camera is looking at
+      UpPoint = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh.ghProth.CamPos.CamUp.r; // define where is up
+      FocalDist = 0.05;    // the focal lenght of the camera
+      FocalHeight = .1*1.1;  
+      
+      AnyScene &scene = .scene;
+      
+      AnyDrawCamera drw = {
+        ScaleXYZ = {1,1,1};
+        Opacity = 0.5;
+        RGB = {0,0,0};
+      };
+      
+      AnyCamRecorder rec = {
+        FileName = ..ImagePath + m_ResultFile + "\\" + m_ResultFile + "." + strval(Counter,"%05i") + "." + ..ImageExt;
+        pxWidth = ..pxWidth ;
+        pxHeight = ..pxHeight;
+        Trig = ..Trig;
+        ResetTrig = ..ResetTrig;
+        
+      };
+      
+    };
+  #endif
+
+  
+};
+

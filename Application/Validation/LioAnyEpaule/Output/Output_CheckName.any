@@ -1,0 +1,36 @@
+/* OUTPUT_CHECKNAME.ANY
+Function to check the name of the results file. 
+
+It compares the variable "m_ResultFile" defined in the file "InputVariable.any" with all files already in the folder corresponding to the concatenation of the 2 variables "m_ResultFolder" and "m_ResultPath" {m_ResultPath+m_ResultFolder}
+
+This file uses the Python function "filename.py" in the same folder. If any problem is encountered regarding this function, I would recommend the following actions:
+  1/ check for your Python installation:
+      - Your version of Python AND Anybody must be the same (32bits both or 64bits both)
+      - Your version is 2.6 or 2.7 (not 3.x: I developed the function on 2.7 and did not integrate/use the required ddl for the 3.x version)
+  2/ Deactivate the automatic filename check (comment the corresponding line in the file "Output_File.any"). 
+  3/ Go to the anyscript forum (forum.anyscript.org) to find some discussions  about Python related problems. I especially recommend one of my previous post where I mentionned it: http://forum.anyscript.org/showthread.php?t=3358&highlight=python&page=2
+  
+Author: Lauranne Sins, LIO Montréal (QC)
+Date: 09-2015
+Model - Version: LioAnyShoulder - v1.0
+*/
+
+AnyFunEx get_filename =
+{
+  AnyString Return = "";  
+  //AnyVar Return = 0.0;
+  AnyFunExMonoPy name = 
+  {
+    ModuleFile = "filename.py";
+    
+    ArgList = 
+    {
+      AnyString Basename = {""};
+      AnyString ext = {""};
+    };
+  };
+};
+
+
+
+

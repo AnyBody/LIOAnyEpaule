@@ -1,0 +1,49 @@
+/* SEQUENCESCALE.ANY
+Operation sequence to save bones after scaling 
+(typically using anthropometric scaling, option 1 for "scale" parameter in the InputVariables.any file)
+Used by software "AppEpaule" (LIO - Laboratoire de recherche en Imagerie et Orthopédie. 2015. Lauranne Sins & Thierry Cresson)
+
+Author:     Lauranne Sins
+Instituion: Laboratoire de recherche en Imagerie et Orthopedie (LIO, Montreal (QC), Canada)
+Version:    1.0
+Date:       09/2015
+*/
+
+
+#path BODYFOLDER "../../../../Body\STLModels\Bones"
+
+AnyOperationSequence Scale = {
+    AnyOperation &InitialConditions = Main.Study.InitialConditions;  
+    AnyOperationMacro SaveSTL_Scapula ={
+      MacroStr= {
+        "classoperation Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.DrwSurfRes " 
+        + strquote("Export surface") 
+        + "--file=" + strquote(BODYFOLDER+"\\Scapula.stl")
+        + "--scale=" + strquote("1000")
+        + "--reference=" 
+        + strquote("global")
+      };
+    };    
+
+    AnyOperationMacro SaveSTL_HumerusGlobal={
+      MacroStr = {
+        "classoperation Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.HumerusBoneGeometryNode.DrwSurf" 
+        + strquote("Export surface") 
+        + "--file=" + strquote(BODYFOLDER+"\\HumerusGlobal.stl")
+        + "--scale=" + strquote("1000")
+        + "--reference=" 
+        + strquote("global")
+      };
+    };    
+    
+    AnyOperationMacro SaveSTL_HumerusLocal={
+      MacroStr = {
+        "classoperation Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.HumerusBoneGeometryNode.DrwSurf" 
+        + strquote("Export surface") 
+        + "--file=" + strquote(BODYFOLDER+"\\HumerusLocal.stl")
+        + "--scale=" + strquote("1000")
+        + "--reference=" 
+        + strquote("local")
+      };
+    };    
+ };

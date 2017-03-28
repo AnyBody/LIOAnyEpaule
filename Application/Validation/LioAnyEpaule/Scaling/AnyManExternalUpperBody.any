@@ -1,0 +1,18 @@
+/* ANYMANEXTERNALUPPERBODY.ANY
+File for anthropometric data
+This file use external landmarks to measure each segment (see include file ***)
+You have to enter the legnth of each segment individualy
+
+Author:     Lauranne Sins
+Instituion: Laboratoire de recherche en Imagerie et Orthopedie (LIO, Montreal (QC), Canada)
+Version:    1.0
+Date:       09/2015
+*/
+
+
+AnyVar BMI = AnthroData.Body_Mass/(AnthroData.body_height^2);
+AnyVar FatPercent = (-0.09 + 0.0149*BMI - 0.00009*BMI^2)*100; //Estimation from Frankenfield et al. (2001) valid for men
+
+// Ouverture du fichier contenant les mesures antrhopometriques ; base sur les mesures externes
+  #path MEASUREFILE "Mesures_" + SUBJECT + ".any"
+  #include "<MEASUREFILE>"

@@ -1,0 +1,27 @@
+/* CUSTOMSCALING.ANY
+This is a place holder for the inclusion of custom scaling laws
+WARNING: not fully validated !
+
+Author:     Lauranne Sins
+Instituion: Laboratoire de recherche en Imagerie et Orthopedie (LIO, Montreal (QC), Canada)
+Version:    1.0
+Date:       09/2015
+
+*/
+
+HumanModel.Scaling.GeometricalScaling = {
+  #define CUSTOM_SCALING_Scapula
+  Scapula= {
+    #include "ScalingLawScapula.any"
+    AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
+    AnyFunTransform3D &ScaleFunction1 = MyScalingLaw.Transform1;
+  };
+  
+  #define CUSTOM_SCALING_Humerus
+  Humerus= {
+    #include "ScalingLawHumerus.any"
+    AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
+    AnyFunTransform3D &ScaleFunction1 = MyScalingLaw.Transform1;
+  };
+
+};

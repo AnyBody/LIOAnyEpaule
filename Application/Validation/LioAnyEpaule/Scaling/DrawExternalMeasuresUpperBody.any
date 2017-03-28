@@ -1,0 +1,240 @@
+/* DRAWEXTERNALMEASURESUPPERBODY.ANY
+This File displays the location of the external measures
+
+Author:     Lauranne Sins
+Instituion: Laboratoire de recherche en Imagerie et Orthopedie (LIO, Montreal (QC), Canada)
+Version:    1.0
+Date:       09/2015
+*/
+
+AnyFolder DrawMeasures = {
+  
+  
+  #define HUMAN_MODEL Main.HumanModel.BodyModel
+  #define DRAW_SETTINGS Main.DrawSettings
+  
+  
+  AnyFolder Head ={
+    AnyRefFrame &refframe1 = HUMAN_MODEL.Trunk.SegmentsThorax.SkullSeg.ChinBonyTip;
+    AnyRefFrame &refframe2 = HUMAN_MODEL.Trunk.SegmentsThorax.SkullSeg.TopOfHead;
+    AnyRefFrameAxis DirAxis= y;
+    AnyVec3 Offset = {0.02, 0, 0};
+    AnyStringVar Text = "Head";
+    AnyVec3 RGB = DRAW_SETTINGS.Line.RGB;
+    AnyVar Thickness = DRAW_SETTINGS.Line.Thickness;
+    
+    #include "<ANYBODY_PATH_BODY>/ToolBox/DimensionArrowWithText/DimensionLines.any"
+    
+    HUMAN_MODEL.Trunk.SegmentsThorax.SkullSeg.ChinBonyTip ={
+      AnyDrawNode DrawNode = 
+      {
+        RGB = {1, 0, 0};
+        ScaleXYZ = 0.3*{0.025, 0.025, 0.025};
+      };
+    };
+    
+    HUMAN_MODEL.Trunk.SegmentsThorax.SkullSeg.TopOfHead ={
+      AnyDrawNode DrawNode = 
+      {
+        RGB = {1, 0, 0};
+        ScaleXYZ = 0.3*{0.025, 0.025, 0.025};
+      };
+    };
+    
+  };
+  
+  
+  
+  AnyFolder Trunk ={
+    AnyRefFrame &refframe1 = HUMAN_MODEL.Trunk.SegmentsThorax.ThoraxSeg.C7Tip;
+    AnyRefFrame &refframe2 = HUMAN_MODEL.Trunk.SegmentsLumbar.SacrumSeg.SacrumBonyTip;
+    AnyRefFrameAxis DirAxis= y;
+    AnyVec3 Offset = {-0.02, 0, 0};
+    AnyStringVar Text = "Trunk";
+    AnyVec3 RGB = DRAW_SETTINGS.Line.RGB;
+    AnyVar Thickness = DRAW_SETTINGS.Line.Thickness;
+    #include "<ANYBODY_PATH_BODY>/ToolBox/DimensionArrowWithText/DimensionLines.any"
+    
+    HUMAN_MODEL.Trunk.SegmentsThorax.ThoraxSeg.C7Tip={
+      AnyDrawNode DrawNode = 
+      {
+        RGB = {1, 0, 0};
+        ScaleXYZ = 0.3*{0.025, 0.025, 0.025};
+      };
+    };
+    
+    HUMAN_MODEL.Trunk.SegmentsLumbar.SacrumSeg.SacrumBonyTip={
+      AnyDrawNode DrawNode = 
+      {
+        RGB = {1, 0, 0};
+        ScaleXYZ = 0.3*{0.025, 0.025, 0.025};
+      };
+    };
+    
+  };
+  
+  
+  
+  
+  AnyFolder Pelvis ={
+    AnyRefFrame &refframe1 = HUMAN_MODEL.Trunk.SegmentsLumbar.PelvisSeg.TrochanterBonyTipR ;
+    AnyRefFrame &refframe2 = HUMAN_MODEL.Trunk.SegmentsLumbar.PelvisSeg.TrochanterBonyTipL;
+    AnyRefFrameAxis DirAxis= z;
+    AnyVec3 Offset = {-0.06, 0, 0};
+    AnyStringVar Text = "Pelvis";
+    AnyVec3 RGB = DRAW_SETTINGS.Line.RGB;
+    AnyVar Thickness = DRAW_SETTINGS.Line.Thickness;
+    #include "<ANYBODY_PATH_BODY>/ToolBox/DimensionArrowWithText/DimensionLines.any"
+    
+    HUMAN_MODEL.Trunk.SegmentsLumbar.PelvisSeg.TrochanterBonyTipR ={
+      AnyDrawNode DrawNode = 
+      {
+        RGB = {1, 0, 0};
+        ScaleXYZ = 0.3*{0.025, 0.025, 0.025};
+      };
+    };
+    
+    HUMAN_MODEL.Trunk.SegmentsLumbar.PelvisSeg.TrochanterBonyTipL={
+      AnyDrawNode DrawNode = 
+      {
+        RGB = {1, 0, 0};
+        ScaleXYZ = 0.3*{0.025, 0.025, 0.025};
+      };
+    };
+    
+  };
+  
+  
+  
+  AnyFolder UpperArm ={
+    AnyRefFrame &refframe1 = HUMAN_MODEL.Right.ShoulderArm.Seg.Humerus.ElbowBonyTip;
+    AnyRefFrame &refframe2 = HUMAN_MODEL.Right.ShoulderArm.Seg.Humerus.AcromionBonyTip;
+    AnyRefFrameAxis DirAxis= {x,y,z};
+    AnyVec3 Offset = {0, 0, -0.06};
+    AnyStringVar Text = "UpperArm";
+    AnyVec3 RGB = DRAW_SETTINGS.Line.RGB;
+    AnyVar Thickness = DRAW_SETTINGS.Line.Thickness;
+    #include "<ANYBODY_PATH_BODY>/ToolBox/DimensionArrowWithText/DimensionLines.any"
+    
+    HUMAN_MODEL.Right.ShoulderArm.Seg.Humerus.ElbowBonyTip={
+      AnyDrawNode DrawNode = 
+      {
+        RGB = {1, 0, 0};
+        ScaleXYZ = 0.3*{0.025, 0.025, 0.025};
+      };
+    };
+    
+    HUMAN_MODEL.Right.ShoulderArm.Seg.Humerus.AcromionBonyTip={
+      AnyDrawNode DrawNode = 
+      {
+        RGB = {1, 0, 0};
+        ScaleXYZ = 0.3*{0.025, 0.025, 0.025};
+      };
+    };
+    
+  };
+  
+//  
+  
+  
+  AnyFolder LowerArm ={
+    AnyRefFrame &refframe1 = HUMAN_MODEL.Right.ShoulderArm.Seg.Ulna.ElbowBonyTip;
+    AnyRefFrame &refframe2 = HUMAN_MODEL.Right.ShoulderArm.Seg.Ulna.StyloidBonyTip;
+    AnyRefFrameAxis DirAxis= {x,y,z};
+    AnyVec3 Offset = {0, -0.04, 0};
+    AnyStringVar Text = "LowerArm";
+    AnyVec3 RGB = DRAW_SETTINGS.Line.RGB;
+    AnyVar Thickness = DRAW_SETTINGS.Line.Thickness;
+    #include "<ANYBODY_PATH_BODY>/ToolBox/DimensionArrowWithText/DimensionLines.any"
+    
+    HUMAN_MODEL.Right.ShoulderArm.Seg.Ulna.ElbowBonyTip={
+      AnyDrawNode DrawNode = 
+      {
+        RGB = {1, 0, 0};
+        ScaleXYZ = 0.3*{0.025, 0.025, 0.025};
+      };
+    };
+    
+    HUMAN_MODEL.Right.ShoulderArm.Seg.Ulna.StyloidBonyTip={
+      AnyDrawNode DrawNode = 
+      {
+        RGB = {1, 0, 0};
+        ScaleXYZ = 0.3*{0.025, 0.025, 0.025};
+      };
+    };
+    
+  };
+  
+  
+  
+  
+  AnyFolder HandLength ={
+    AnyRefFrame &refframe1 = HUMAN_MODEL.Right.ShoulderArm.Seg.Hand.PalmBase;
+    AnyRefFrame &refframe2 = HUMAN_MODEL.Right.ShoulderArm.Seg.Hand.MiddleFingerTip;
+    AnyRefFrameAxis DirAxis= {x,y,z};
+    AnyVec3 Offset = {0, 0, -0.035};
+    AnyStringVar Text = "HandLength";
+    AnyVec3 RGB = DRAW_SETTINGS.Line.RGB;
+    AnyVar Thickness = DRAW_SETTINGS.Line.Thickness;
+    #include "<ANYBODY_PATH_BODY>/ToolBox/DimensionArrowWithText/DimensionLines.any"
+    
+    HUMAN_MODEL.Right.ShoulderArm.Seg.Hand.PalmBase={
+      AnyDrawNode DrawNode = 
+      {
+        RGB = {1, 0, 0};
+        ScaleXYZ = 0.3*{0.025, 0.025, 0.025};
+      };
+    };
+    
+    HUMAN_MODEL.Right.ShoulderArm.Seg.Hand.MiddleFingerTip={
+      AnyDrawNode DrawNode = 
+      {
+        RGB = {1, 0, 0};
+        ScaleXYZ = 0.3*{0.025, 0.025, 0.025};
+      };
+    };
+    
+  };
+
+  
+  
+  
+  AnyFolder HandBreath ={
+    AnyRefFrame &refframe1 = HUMAN_MODEL.Right.ShoulderArm.Seg.Hand.CMPFinger5;
+    AnyRefFrame &refframe2 = HUMAN_MODEL.Right.ShoulderArm.Seg.Hand.CMPFinger2;
+    AnyRefFrameAxis DirAxis= {x,y,z};
+    AnyVec3 Offset = {0, 0, 0.035};
+    AnyStringVar Text = "HandBreath";
+    AnyVec3 RGB = DRAW_SETTINGS.Line.RGB;
+    AnyVar Thickness = DRAW_SETTINGS.Line.Thickness;
+    #include "<ANYBODY_PATH_BODY>/ToolBox/DimensionArrowWithText/DimensionLines.any"
+    
+    HUMAN_MODEL.Right.ShoulderArm.Seg.Hand.CMPFinger5={
+      AnyDrawNode DrawNode = 
+      {
+        RGB = {1, 0, 0};
+        ScaleXYZ = 0.3*{0.025, 0.025, 0.025};
+      };
+    };
+    
+    HUMAN_MODEL.Right.ShoulderArm.Seg.Hand.CMPFinger2={
+      AnyDrawNode DrawNode = 
+      {
+        RGB = {1, 0, 0};
+        ScaleXYZ = 0.3*{0.025, 0.025, 0.025};
+      };
+    };
+    
+  };
+  
+  
+};
+
+HUMAN_MODEL.Trunk = {#include "<ANYBODY_PATH_BODY>/Trunk/NodeForScalingExt.any"};
+
+HUMAN_MODEL.Right.ShoulderArm.Seg = {#include "<ANYBODY_PATH_BODY>/Arm/NodeForScalingExt.any"};
+//HUMAN_MODEL.Left.ShoulderArm.Seg = {#include "<ANYBODY_PATH_BODY>/Arm/NodeForScalingExt.any"};
+
+// clean up 
+  #undef HUMAN_MODEL
+  #undef DRAW_SETTINGS

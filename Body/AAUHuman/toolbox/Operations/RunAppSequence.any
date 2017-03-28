@@ -1,0 +1,20 @@
+/**Execute this operation to run the model in the intended operation sequence.  
+It is also possible to run operations seperately, by manual selections in the operation tree*/
+AnyOperationSequence RunApplication = {
+  
+  /*This operation calibrates the muscles in the model if these are of the type AnyMuscleModel3E.
+  This will just be an empty operation if the model is using a muscle type that does not require calibration.*/
+  AnyOperation &CalibrationAnal = Main.HumanModel.Calibration.CalibrationSequence;  
+  
+  ///This operation is the inverse dynamic analysis
+  AnyOperation &InvAnal=Main.Study.InverseDynamics;
+  
+};  
+
+AnyOperationSequence SaveResultsh5 = {
+  AnyOperationMacro SaveDataDeep ={
+    MacroStr = {"classoperation Main.Study.Output " + strquote("Save data") + "--type=Deep --file=" + strquote(m_ResultPath + m_ResultFolder + m_ResultFile +".anydata.h5")};
+  };    
+};
+
+

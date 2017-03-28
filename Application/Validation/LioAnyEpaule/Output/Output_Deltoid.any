@@ -1,0 +1,173 @@
+// MEASURE OF FORCES AND MOMENTS
+AnyFolder ForceMomentMeasure={
+  // Posterior deltoid
+  AnyForceMomentMeasure2 PostDeltForce = {
+    AnyRefFrame &ref= ....ForceRefFrame;
+    
+    AnySeg &seg0= ....Seg.Humerus;  
+      AnySeg &seg5=....Mus.ArtificialRake.DeltoidMuscleConnector;       
+      
+      AnyForceBase &Scap1  = ....Mus.deltoideus_scapular_part_1; 
+      AnyForceBase &Scap2  = ....Mus.deltoideus_scapular_part_2; 
+  };  
+  
+  // Anterior deltoid
+  AnyForceMomentMeasure2 MidDeltForce = {
+    AnyRefFrame &ref= ....ForceRefFrame;
+    
+    AnySeg &seg0= ....Seg.Humerus;  
+      AnySeg &seg5= ....Mus.ArtificialRake.DeltoidMuscleConnector;       
+    
+      AnyForceBase &Scap3  = ....Mus.deltoideus_scapular_part_3; 
+      AnyForceBase &Scap4  = ....Mus.deltoideus_scapular_part_4; 
+      AnyForceBase &Scap5  = ....Mus.deltoideus_scapular_part_5; 
+      AnyForceBase &Scap6  = ....Mus.deltoideus_scapular_part_6;
+      AnyForceBase &Clav1  = ....Mus.deltoideus_clavicular_part_1;    
+  };  
+  
+  // Anterior deltoid
+  AnyForceMomentMeasure2 AntDeltForce = {
+    AnyRefFrame &ref= ....ForceRefFrame;
+    
+    AnySeg &seg0= ....Seg.Humerus;  
+      AnySeg &seg5= ....Mus.ArtificialRake.DeltoidMuscleConnector;       
+  
+      AnyForceBase &Clav2  = ....Mus.deltoideus_clavicular_part_2; 
+      AnyForceBase &Clav3  = ....Mus.deltoideus_clavicular_part_3;    
+      AnyForceBase &Clav4  = ....Mus.deltoideus_clavicular_part_4;    
+      AnyForceBase &Clav5  = ....Mus.deltoideus_clavicular_part_5;    
+      AnyForceBase &Clav6  = ....Mus.deltoideus_clavicular_part_6;      
+  };
+};
+  
+
+// MUSCULAR ACTIVITY, FORCE, POWER, STRENGTH, AND LEVER ARM FOR EACH DELTOID FIBER
+AnyFolder Fibres = {
+  // Activity
+  #if ActivityOutput == 1
+  AnyFolder Activity = { 
+      AnyVar ds1 = ....Mus.deltoideus_scapular_part_1.Activity;
+      AnyVar ds2 = ....Mus.deltoideus_scapular_part_2.Activity;
+      AnyVar ds3 = ....Mus.deltoideus_scapular_part_3.Activity;
+      AnyVar ds4 = ....Mus.deltoideus_scapular_part_4.Activity;
+      AnyVar ds5 = ....Mus.deltoideus_scapular_part_5.Activity;
+      AnyVar ds6 = ....Mus.deltoideus_scapular_part_6.Activity;
+      
+      AnyVar dc1 = ....Mus.deltoideus_clavicular_part_1.Activity;
+      AnyVar dc2 = ....Mus.deltoideus_clavicular_part_2.Activity;
+      AnyVar dc3 = ....Mus.deltoideus_clavicular_part_3.Activity;
+      AnyVar dc4 = ....Mus.deltoideus_clavicular_part_4.Activity;
+      AnyVar dc5 = ....Mus.deltoideus_clavicular_part_5.Activity;
+      AnyVar dc6 = ....Mus.deltoideus_clavicular_part_6.Activity;
+  };     
+  #endif
+  
+  // Force
+  #if ForcesOutput == 1
+  AnyFolder Force = { 
+      AnyVar ds1 = ....Mus.deltoideus_scapular_part_1.Ft;
+      AnyVar ds2 = ....Mus.deltoideus_scapular_part_2.Ft;
+      AnyVar ds3 = ....Mus.deltoideus_scapular_part_3.Ft;
+      AnyVar ds4 = ....Mus.deltoideus_scapular_part_4.Ft;
+      AnyVar ds5 = ....Mus.deltoideus_scapular_part_5.Ft;
+      AnyVar ds6 = ....Mus.deltoideus_scapular_part_6.Ft;
+      
+      AnyVar dc1 = ....Mus.deltoideus_clavicular_part_1.Ft;
+      AnyVar dc2 = ....Mus.deltoideus_clavicular_part_2.Ft;
+      AnyVar dc3 = ....Mus.deltoideus_clavicular_part_3.Ft;
+      AnyVar dc4 = ....Mus.deltoideus_clavicular_part_4.Ft;
+      AnyVar dc5 = ....Mus.deltoideus_clavicular_part_5.Ft;
+      AnyVar dc6 = ....Mus.deltoideus_clavicular_part_6.Ft;
+  };
+  #endif
+  
+  // Power
+  #if PowerOutput == 1
+  AnyFolder Power = { 
+      AnyVar ds1 = ....Mus.deltoideus_scapular_part_1.Pm;
+      AnyVar ds2 = ....Mus.deltoideus_scapular_part_2.Pm;
+      AnyVar ds3 = ....Mus.deltoideus_scapular_part_3.Pm;
+      AnyVar ds4 = ....Mus.deltoideus_scapular_part_4.Pm;
+      AnyVar ds5 = ....Mus.deltoideus_scapular_part_5.Pm;
+      AnyVar ds6 = ....Mus.deltoideus_scapular_part_6.Pm;
+      
+      AnyVar dc1 = ....Mus.deltoideus_clavicular_part_1.Pm;
+      AnyVar dc2 = ....Mus.deltoideus_clavicular_part_2.Pm;
+      AnyVar dc3 = ....Mus.deltoideus_clavicular_part_3.Pm;
+      AnyVar dc4 = ....Mus.deltoideus_clavicular_part_4.Pm;
+      AnyVar dc5 = ....Mus.deltoideus_clavicular_part_5.Pm;
+      AnyVar dc6 = ....Mus.deltoideus_clavicular_part_6.Pm;
+  };
+  #endif
+
+  // Strentgh
+  #if StrengthOutput == 1
+  AnyFolder Strength= { 
+      AnyVar ds1 = ....Mus.deltoideus_scapular_part_1.Strength;
+      AnyVar ds2 = ....Mus.deltoideus_scapular_part_2.Strength;
+      AnyVar ds3 = ....Mus.deltoideus_scapular_part_3.Strength;
+      AnyVar ds4 = ....Mus.deltoideus_scapular_part_4.Strength;
+      AnyVar ds5 = ....Mus.deltoideus_scapular_part_5.Strength;
+      AnyVar ds6 = ....Mus.deltoideus_scapular_part_6.Strength;
+      
+      AnyVar dc1 = ....Mus.deltoideus_clavicular_part_1.Strength;
+      AnyVar dc2 = ....Mus.deltoideus_clavicular_part_2.Strength;
+      AnyVar dc3 = ....Mus.deltoideus_clavicular_part_3.Strength;
+      AnyVar dc4 = ....Mus.deltoideus_clavicular_part_4.Strength;
+      AnyVar dc5 = ....Mus.deltoideus_clavicular_part_5.Strength;
+      AnyVar dc6 = ....Mus.deltoideus_clavicular_part_6.Strength;
+  };
+  #endif
+
+  // Lever arm
+  #if LmtOutput == 1
+  AnyFolder Lmt= { 
+      AnyVar ds1 = ....Mus.deltoideus_scapular_part_1.Lmt;
+      AnyVar ds2 = ....Mus.deltoideus_scapular_part_2.Lmt;
+      AnyVar ds3 = ....Mus.deltoideus_scapular_part_3.Lmt;
+      AnyVar ds4 = ....Mus.deltoideus_scapular_part_4.Lmt;
+      AnyVar ds5 = ....Mus.deltoideus_scapular_part_5.Lmt;
+      AnyVar ds6 = ....Mus.deltoideus_scapular_part_6.Lmt;
+  
+      AnyVar dc1 = ....Mus.deltoideus_clavicular_part_1.Lmt;
+      AnyVar dc2 = ....Mus.deltoideus_clavicular_part_2.Lmt;
+      AnyVar dc3 = ....Mus.deltoideus_clavicular_part_3.Lmt;
+      AnyVar dc4 = ....Mus.deltoideus_clavicular_part_4.Lmt;
+      AnyVar dc5 = ....Mus.deltoideus_clavicular_part_5.Lmt;
+      AnyVar dc6 = ....Mus.deltoideus_clavicular_part_6.Lmt;
+  };
+  #endif
+   
+  #if LeverArmOutput == 1
+  AnyFolder LeverArm = { 
+      AnyVar ds1 = -....Mus.deltoideus_scapular_part_1.LmtDot/(...vel+1e-6);
+      AnyVar ds2 = -....Mus.deltoideus_scapular_part_2.LmtDot/(...vel+1e-6);
+      AnyVar ds3 = -....Mus.deltoideus_scapular_part_3.LmtDot/(...vel+1e-6);
+      AnyVar ds4 = -....Mus.deltoideus_scapular_part_4.LmtDot/(...vel+1e-6);
+      AnyVar ds5 = -....Mus.deltoideus_scapular_part_5.LmtDot/(...vel+1e-6);
+      AnyVar ds6 = -....Mus.deltoideus_scapular_part_6.LmtDot/(...vel+1e-6);
+      
+      AnyVar dc1 = -....Mus.deltoideus_clavicular_part_1.LmtDot/(...vel+1e-6);
+      AnyVar dc2 = -....Mus.deltoideus_clavicular_part_2.LmtDot/(...vel+1e-6);
+      AnyVar dc3 = -....Mus.deltoideus_clavicular_part_3.LmtDot/(...vel+1e-6);
+      AnyVar dc4 = -....Mus.deltoideus_clavicular_part_4.LmtDot/(...vel+1e-6);
+      AnyVar dc5 = -....Mus.deltoideus_clavicular_part_5.LmtDot/(...vel+1e-6);
+      AnyVar dc6 = -....Mus.deltoideus_clavicular_part_6.LmtDot/(...vel+1e-6);
+  };
+  #endif
+  
+  
+};
+
+// MUSCULAR FORCE AND MOMENT FOR EACH PORTION OF THE DELTOID MUSCLE (ANT, MID, POST)
+AnyFolder Portions = {
+  AnyVec3 FPostD = .ForceMomentMeasure.PostDeltForce.F*.ForceMomentMeasure.PostDeltForce.ref.Axes; 
+  AnyVec3 FMidD = .ForceMomentMeasure.MidDeltForce.F*.ForceMomentMeasure.MidDeltForce.ref.Axes; 
+  AnyVec3 FAntD = .ForceMomentMeasure.AntDeltForce.F*.ForceMomentMeasure.AntDeltForce.ref.Axes; 
+  AnyVec3 MPostD = .ForceMomentMeasure.PostDeltForce.M;
+  AnyVec3 MMidD = .ForceMomentMeasure.MidDeltForce.M;
+  AnyVec3 MAntD = .ForceMomentMeasure.AntDeltForce.M;
+};   
+
+
+

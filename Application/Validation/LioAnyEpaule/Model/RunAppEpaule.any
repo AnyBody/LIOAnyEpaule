@@ -1,0 +1,16 @@
+/* APPEPAULE SEQUENCE
+Used by the AppEpaule software to launch complete inverse dynamic analysis : 
+Initial Condition, Calibration, InverseDynamics and Automatic save results (*.anydata.h5 format)
+
+Author:     Lauranne Sins
+Instituion: Laboratoire de recherche en Imagerie et Orthopedie (LIO, Montreal (QC), Canada)
+Version:    1.0
+Date:       09/2015
+*/
+
+AnyOperationSequence RunAppEpaule = {
+  AnyOperation &InitialConditions = Main.Study.InitialConditions;  
+  AnyOperation &Calibration = Main.HumanModel.Calibration.CalibrationSequence;  
+  AnyOperation &InverseAnalysis=Main.Study.InverseDynamics;
+  AnyOperation &SaveH5=Main.SaveResultsh5;
+};

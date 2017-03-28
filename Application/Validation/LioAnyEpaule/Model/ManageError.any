@@ -1,0 +1,20 @@
+#if BallAndSocket == 1
+  #undef ForDepKin 
+  #undef translate
+  #define ForDepKin 0
+  #define translate 0
+#endif
+
+#if BallAndSocket == 0
+  #if translate == 0
+    #undef ForDepKin 
+    #define ForDepKin 1
+  #endif
+  
+  #if translate == 1
+    #undef ForDepKin 
+    #define ForDepKin 0
+  #endif
+#endif
+
+    
