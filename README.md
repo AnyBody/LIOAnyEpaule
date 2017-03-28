@@ -1,13 +1,13 @@
-# LIOAnyShoulder
-LIOAnyShoulder is a musculoskeletal model for non-conforming total shoulder
-arthroplasty (NC-TSA) evaluation.
+# LIOAnyEpaule
+LIOAnyEpaule (En: LIOAnyShoulder) is a musculoskeletal model for non-conforming
+total shoulder arthroplasty (NC-TSA) evaluation.
 
-The LIOAnyShoulder (FR: LIOAnyEpaule) model consists in an inverse dynamic
-musculoskeletal model for shoulder griddle study. More specifically, it has been
-developed with the objective to be used for non-conforming total shoulder
-arthroplasty (NC-TSA) evaluation. Development, verification and validation of
-this model was one of the objectives of a PhD study. Method and results are
-published in the Journal of Biomechanical Engineering:
+The LIOAnyEpaule model consists in an inverse dynamic musculoskeletal model for
+shoulder griddle study. More specifically, it has been developed with the
+objective to be used for non-conforming total shoulder arthroplasty (NC-TSA)
+evaluation. Development, verification and validation of this model was one of
+the objectives of a PhD study. Method and results are published in the Journal
+of Biomechanical Engineering:
 
 > Sins L, Tétreault P, Hagemeister N, Nuño N. Adaptation of the AnyBody?'
 > Musculoskeletal Shoulder Model to the Nonconforming Total Shoulder Arthroplasty
