@@ -76,6 +76,7 @@ Table columns are:
 <u>File</u>: LoadValues.any <br>
 <u>Path</u>: [MainModelPath]/Model <br>
 
+
 <table>
     <tbody>
         <tr>
@@ -94,12 +95,19 @@ Table columns are:
         </tr>
         <tr>
             <td>
-                <p><i>Option to activate or deactivate head-glenoid translation<p><i>
-                <p>0: Articulation with 6 degrees of freedom (translations). Imply FDK utilisation [by default]</p>
-                <p>1 : Ball&amp;Socket articulation (no translations)</p>
+                <i>Option to activate or deactivate head-glenoid translation:</i>
+                <ul style = "margin-top: 0px; padding-top: 0 px;">
+                    <li>0: Articulation with 6 degrees of freedom (translations). Imply FDK utilisation [by default]</li>
+                    <li>1 : Ball&amp;Socket articulation (no translations)</li>
+                </ul>
             </td>
             <td>
-                <p>BallAndSocket</p>
+            <p><tag style="border: 1px solid darkgrey;
+    border-radius: 3px;
+    background-color: rgb(220,220,220); 
+    color: rgb(90,90,90);
+    padding: 2px;">
+    BallAndSocket</tag></p>
             </td>
             <td >
                 <p>0</p>
@@ -110,12 +118,21 @@ Table columns are:
         </tr>
         <tr>
             <td>
-                <p><i>Algorithm FDK values (case 0, with translations)</i></p>
-                <p>Non-liner model [Bigliani, 1992]:</p>
-                <p>F : Force</p>
-                <p>k&nbsp; : stiffness</p>
-                <p>&alpha; : translation</p>
-                <p>Medio-Lateral stiffness: manage by the contact between the stl. model.</p>
+                <i>Algorithm FDK values (case 0, with translations)</i>
+                <ul style = "margin-top: 0px; padding-top: 0 px;">
+                    <p>Non-liner model [Bigliani, 1992]:</p>
+                    <li>F : Force</li>
+                    <li>k&nbsp; : stiffness</li>
+                    <li>&alpha; : translation</li>
+                    <li>Medio-Lateral stiffness: manage by the contact between the stl. model.</li>
+            </td>
+            <td>
+                <p>k<sub>0</sub></p>
+                <p>k<sub>1</sub></p>
+                <p>k<sub>2</sub></p>
+                <p>k<sub>3</sub></p>
+                <p>k<sub>4</sub></p>
+                <p>k<sub>z</sub></p>
             </td>
             <td>
                 <p>k<sub>0</sub></p>
@@ -145,6 +162,8 @@ Table columns are:
         </tr>
     </tbody>
 </table>
+
+
 
 
 ### 2. 	Contact with prosthetic components
