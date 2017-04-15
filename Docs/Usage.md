@@ -76,13 +76,75 @@ Table columns are:
 <u>File</u>: LoadValues.any <br>
 <u>Path</u>: [MainModelPath]/Model <br>
 
-
-| Definition        |     Variable    |   Value    | Code                                 | 
-| ------------------|:---------------:|------------|--------------------------------------|
-|  _Option to activate or deactivate head-glenoid translation_ <br> 0: Articulation with 6 degrees of freedom (translations). Imply FDK utilisation [by default] <br> 1 : Ball&Socket articulation (no translations)|   `BallAndSocket`    |  0 | `#define BallAndSocket` |
-|  _Algorithm FDK values (case 0, with translations)_ <br> Non-liner model [Bigliani, 1992]:  <br> [[Image:maths.png]] <br> F: force<br> k: stiffness <br> α: translation<br><br>Medio-Lateral stiffness: manage by the contact between the stl. model.|  k1,k2,k3,k4,kz   |  <br>10,75<br>-7787<br>4391<br>0<br> - 0.08637<br><br>0 | AnyFolder FDK ={<br> AnyVar k0 = 10.75;<br>AnyVar k1 = -7.787;<br>AnyVar k2 = 4.391;<br>AnyVar k3 = 0 ;<br>AnyVar k4 = -0.08637 ;<br><br>AnyVar kz = 0; }; |
-
-
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <p>Definition</p>
+            </td>
+            <td>
+                <p>Variable</p>
+            </td>
+            <td >
+                <p>Value</p>
+            </td>
+            <td>
+                <p>Code</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p><i>Option to activate or deactivate head-glenoid translation<p><i>
+                <p>0: Articulation with 6 degrees of freedom (translations). Imply FDK utilisation [by default]</p>
+                <p>1 : Ball&amp;Socket articulation (no translations)</p>
+            </td>
+            <td>
+                <p>BallAndSocket</p>
+            </td>
+            <td >
+                <p>0</p>
+            </td>
+            <td>
+                <p>#define BallAndSocket 0</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p><i>Algorithm FDK values (case 0, with translations)</i></p>
+                <p>Non-liner model [Bigliani, 1992]:</p>
+                <p>F : Force</p>
+                <p>k&nbsp; : stiffness</p>
+                <p>&alpha; : translation</p>
+                <p>Medio-Lateral stiffness: manage by the contact between the stl. model.</p>
+            </td>
+            <td>
+                <p>k<sub>0</sub></p>
+                <p>k<sub>1</sub></p>
+                <p>k<sub>2</sub></p>
+                <p>k<sub>3</sub></p>
+                <p>k<sub>4</sub></p>
+                <p>k<sub>z</sub></p>
+            </td>
+            <td >
+                <p>10,75</p>
+                <p>-7787</p>
+                <p>4391</p>
+                <p>0</p>
+                <p>&nbsp;- 0.08637</p>
+                <p>0</p>
+            </td>
+            <td>
+                <p>AnyFolder FDK ={<p>
+                <p>&nbsp;AnyVar k0 = 10.75;&nbsp;&nbsp;</p>
+                <p>&nbsp; AnyVar k1 = -7.787;&nbsp;</p>
+                <p>&nbsp; AnyVar k2 = 4.391;</p>
+                <p>&nbsp; AnyVar k3 = 0 ;</p>
+                <p>&nbsp; AnyVar k4 = -0.08637 ;</p>
+                <p>&nbsp; AnyVar kz = 0; };</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 
 ### 2. 	Contact with prosthetic components
