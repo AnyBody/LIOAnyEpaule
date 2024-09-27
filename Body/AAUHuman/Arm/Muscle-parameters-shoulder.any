@@ -55,7 +55,7 @@ AnyVar StrengthScaleHumerus = ....Scaling.StrengthScaling.Humerus.StrengthScale;
 AnyVar StrengthScaleUlna = ....Scaling.StrengthScaling.Ulna.StrengthScale;
 AnyFolder &ScaleStrength = Main.InputVariables.SettingValues.ScaleStrengthMuscle;
 
-  #if (ANYBODY_V1 < 8) | (ANYBODY_V1 == 8 & ANYBODY_V2 < 0) | (ANYBODY_V1 == 8 & ANYBODY_V2 == 0 & ANYBODY_V4 < 11890 )
+  #if (ANYBODY_V1 < 7) | (ANYBODY_V1 == 7 & ANYBODY_V2 < 1) 
     #define __Lf_PARAM_ID Lfbar
     #define __Gamma_PARAM_ID Gammabar
     #define __Epsilon_PARAM_ID Epsilonbar
