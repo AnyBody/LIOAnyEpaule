@@ -9,12 +9,12 @@ AnyFolder ArmCal2 ={
   AnyFolder &SegSideCal = .SideHumanFolderRef.ShoulderArm.Seg;
   AnyFolder &JointsSideCal = .SideHumanFolderRef.ShoulderArm.Jnt;
   
-  AnyShortestPathMuscle &del1 =  .SideHumanFolderRef.ShoulderArm.Mus.deltoideus_clavicular_part_1;
-  AnyShortestPathMuscle &del2 =  .SideHumanFolderRef.ShoulderArm.Mus.deltoideus_clavicular_part_2;
-  AnyShortestPathMuscle &del3 =  .SideHumanFolderRef.ShoulderArm.Mus.deltoideus_clavicular_part_3;
-  AnyShortestPathMuscle &del4 =  .SideHumanFolderRef.ShoulderArm.Mus.deltoideus_clavicular_part_4;
-  AnyShortestPathMuscle &del5 =  .SideHumanFolderRef.ShoulderArm.Mus.deltoideus_clavicular_part_5;
-  AnyShortestPathMuscle &del6 =  .SideHumanFolderRef.ShoulderArm.Mus.deltoideus_clavicular_part_6;
+  AnyMuscleShortestPath &del1 =  .SideHumanFolderRef.ShoulderArm.Mus.deltoideus_clavicular_part_1;
+  AnyMuscleShortestPath &del2 =  .SideHumanFolderRef.ShoulderArm.Mus.deltoideus_clavicular_part_2;
+  AnyMuscleShortestPath &del3 =  .SideHumanFolderRef.ShoulderArm.Mus.deltoideus_clavicular_part_3;
+  AnyMuscleShortestPath &del4 =  .SideHumanFolderRef.ShoulderArm.Mus.deltoideus_clavicular_part_4;
+  AnyMuscleShortestPath &del5 =  .SideHumanFolderRef.ShoulderArm.Mus.deltoideus_clavicular_part_5;
+  AnyMuscleShortestPath &del6 =  .SideHumanFolderRef.ShoulderArm.Mus.deltoideus_clavicular_part_6;
   
   
   AnyFolder &MusParCalSide =  .SideHumanFolderRef.ShoulderArm.MusPar;

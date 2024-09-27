@@ -16,7 +16,7 @@ AnyFolder ArmCal5 ={
   AnyFolder &SegSideCal = .SideHumanFolderRef.ShoulderArm.Seg;
   AnyFolder &JointsSideCal = .SideHumanFolderRef.ShoulderArm.Jnt;
   
-  AnyShortestPathMuscle &lat4 =  .SideHumanFolderRef.ShoulderArm.Mus.latissimus_dorsi_4;
+  AnyMuscleShortestPath &lat4 =  .SideHumanFolderRef.ShoulderArm.Mus.latissimus_dorsi_4;
 //  AnyShortestPathMuscle &lat5 =  .SideHumanFolderRef.ShoulderArm.Mus.latissimus_dorsi_5;
   
   
