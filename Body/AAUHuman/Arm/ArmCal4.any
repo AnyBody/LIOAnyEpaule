@@ -9,29 +9,29 @@ AnyFolder ArmCal4 ={
   AnyFolder &JointsSideCal = .SideHumanFolderRef.ShoulderArm.Jnt;
   
   #if SupraOnOff ==1
-    AnyShortestPathMuscle &sup1 =  .SideHumanFolderRef.ShoulderArm.Mus.supraspinatus_1; 
-    AnyShortestPathMuscle &sup2 =  .SideHumanFolderRef.ShoulderArm.Mus.supraspinatus_2; 
-    AnyShortestPathMuscle &sup3 =  .SideHumanFolderRef.ShoulderArm.Mus.supraspinatus_3; 
-    AnyShortestPathMuscle &sup4 =  .SideHumanFolderRef.ShoulderArm.Mus.supraspinatus_4; 
-    AnyShortestPathMuscle &sup5 =  .SideHumanFolderRef.ShoulderArm.Mus.supraspinatus_5; 
-    AnyShortestPathMuscle &sup6 =  .SideHumanFolderRef.ShoulderArm.Mus.supraspinatus_6; 
+    AnyMuscleShortestPath &sup1 =  .SideHumanFolderRef.ShoulderArm.Mus.supraspinatus_1; 
+    AnyMuscleShortestPath &sup2 =  .SideHumanFolderRef.ShoulderArm.Mus.supraspinatus_2; 
+    AnyMuscleShortestPath &sup3 =  .SideHumanFolderRef.ShoulderArm.Mus.supraspinatus_3; 
+    AnyMuscleShortestPath &sup4 =  .SideHumanFolderRef.ShoulderArm.Mus.supraspinatus_4; 
+    AnyMuscleShortestPath &sup5 =  .SideHumanFolderRef.ShoulderArm.Mus.supraspinatus_5; 
+    AnyMuscleShortestPath &sup6 =  .SideHumanFolderRef.ShoulderArm.Mus.supraspinatus_6; 
   #endif
   
   #if InfraOnOff ==1
-    AnyShortestPathMuscle &inf1 =  .SideHumanFolderRef.ShoulderArm.Mus.infraspinatus_1; 
-    AnyShortestPathMuscle &inf2 =  .SideHumanFolderRef.ShoulderArm.Mus.infraspinatus_2; 
-    AnyShortestPathMuscle &inf3 =  .SideHumanFolderRef.ShoulderArm.Mus.infraspinatus_3; 
-    AnyShortestPathMuscle &inf4 =  .SideHumanFolderRef.ShoulderArm.Mus.infraspinatus_4; 
-    AnyShortestPathMuscle &inf5 =  .SideHumanFolderRef.ShoulderArm.Mus.infraspinatus_5; 
-    AnyShortestPathMuscle &inf6 =  .SideHumanFolderRef.ShoulderArm.Mus.infraspinatus_6; 
+    AnyMuscleShortestPath &inf1 =  .SideHumanFolderRef.ShoulderArm.Mus.infraspinatus_1; 
+    AnyMuscleShortestPath &inf2 =  .SideHumanFolderRef.ShoulderArm.Mus.infraspinatus_2; 
+    AnyMuscleShortestPath &inf3 =  .SideHumanFolderRef.ShoulderArm.Mus.infraspinatus_3; 
+    AnyMuscleShortestPath &inf4 =  .SideHumanFolderRef.ShoulderArm.Mus.infraspinatus_4; 
+    AnyMuscleShortestPath &inf5 =  .SideHumanFolderRef.ShoulderArm.Mus.infraspinatus_5; 
+    AnyMuscleShortestPath &inf6 =  .SideHumanFolderRef.ShoulderArm.Mus.infraspinatus_6; 
   #endif
   
-  AnyShortestPathMuscle &TLH1 =  .SideHumanFolderRef.ShoulderArm.Mus.Triceps_LH_1; 
-  AnyShortestPathMuscle &TLH2 =  .SideHumanFolderRef.ShoulderArm.Mus.Triceps_LH_2; 
-  AnyShortestPathMuscle &TME1 =  .SideHumanFolderRef.ShoulderArm.Mus.Triceps_ME_1; 
-  AnyShortestPathMuscle &TME2 =  .SideHumanFolderRef.ShoulderArm.Mus.Triceps_ME_2; 
-  AnyShortestPathMuscle &TLA1 =  .SideHumanFolderRef.ShoulderArm.Mus.Triceps_LA_1; 
-  AnyShortestPathMuscle &TLA2 =  .SideHumanFolderRef.ShoulderArm.Mus.Triceps_LA_2; 
+  AnyMuscleShortestPath &TLH1 =  .SideHumanFolderRef.ShoulderArm.Mus.Triceps_LH_1; 
+  AnyMuscleShortestPath &TLH2 =  .SideHumanFolderRef.ShoulderArm.Mus.Triceps_LH_2; 
+  AnyMuscleShortestPath &TME1 =  .SideHumanFolderRef.ShoulderArm.Mus.Triceps_ME_1; 
+  AnyMuscleShortestPath &TME2 =  .SideHumanFolderRef.ShoulderArm.Mus.Triceps_ME_2; 
+  AnyMuscleShortestPath &TLA1 =  .SideHumanFolderRef.ShoulderArm.Mus.Triceps_LA_1; 
+  AnyMuscleShortestPath &TLA2 =  .SideHumanFolderRef.ShoulderArm.Mus.Triceps_LA_2; 
   
   
   AnyFolder &MusParCalSide =  .SideHumanFolderRef.ShoulderArm.MusPar;

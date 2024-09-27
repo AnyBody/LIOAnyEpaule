@@ -15,18 +15,18 @@ AnyFolder Muscle={
   
   AnyInt ROMExceeded = iffun(orfun(  gtfun(MeasureOrg.Pos[0],.ROM[0]),  ltfun(MeasureOrg.Pos[0],-.ROM[1])),0,1);
   
-  AnyGeneralMuscle PosMuscle={
+  AnyMuscleGeneric PosMuscle={
     AnyVar ROMStrenghtScale=iffun(.ROMExceeded,1.0,0.1); 
-    
     AnyMuscleModelUsr1 MusMdl={
       F0=0;
       S=...Strength[0]*.ROMStrenghtScale; 
     };
     AnyKinMeasureOrg &ref=.MeasureOrg;
-    ForceDirection = 1;
+    Type = NonNegative;
+    //ForceDirection = 1;
   };
   
-  AnyGeneralMuscle NegMuscle={
+  AnyMuscleGeneric NegMuscle={
     
     AnyVar ROMStrenghtScale=iffun(.ROMExceeded,1.0,0.1); 
     AnyMuscleModelUsr1 MusMdl={
@@ -34,7 +34,8 @@ AnyFolder Muscle={
       S=...Strength[1]*.ROMStrenghtScale; 
     };
     AnyKinMeasureOrg &ref=.MeasureOrg;
-    ForceDirection = -1;
+    Type = NonPositive;
+    //ForceDirection = -1;
   };
   
 };

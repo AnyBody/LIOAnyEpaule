@@ -36,17 +36,14 @@ AnyFolder ScapulaAIThoraxNodeReaction = {
     AnyKinPointSurface Measure1 = {
       AnyRefFrame &r1 = ..ContactSeg.n1;
       AnySurface &s1 = ....ShoulderRef.ScapulaEllipsoidOrigin.Elipse;
-      NormedMeasureOnOff = Off;
     };
     AnyKinPointSurface Measure2 = {
       AnyRefFrame &r1 = ..ContactSeg.n2;
       AnySurface &s1 = ....ShoulderRef.ScapulaEllipsoidOrigin.Elipse;
-      NormedMeasureOnOff = Off;
     };
     AnyKinPointSurface Measure3 = {
       AnyRefFrame &r1 = ..ContactSeg.n3;
       AnySurface &s1 = ....ShoulderRef.ScapulaEllipsoidOrigin.Elipse;
-      NormedMeasureOnOff = Off;
     };
     
     AnyKinMeasureOrg RotZ = {
@@ -184,17 +181,14 @@ AnyFolder ScapulaTSThoraxNodeReaction = {
     AnyKinPointSurface Measure1 = {
       AnyRefFrame &r1 = ..ContactSeg.n1;
       AnySurface &s1 = ....ShoulderRef.ScapulaEllipsoidOrigin.Elipse;
-      NormedMeasureOnOff = Off;
     };
     AnyKinPointSurface Measure2 = {
       AnyRefFrame &r1 = ..ContactSeg.n2;
       AnySurface &s1 = ....ShoulderRef.ScapulaEllipsoidOrigin.Elipse;
-      NormedMeasureOnOff = Off;
     };
     AnyKinPointSurface Measure3 = {
       AnyRefFrame &r1 = ..ContactSeg.n3;
       AnySurface &s1 = ....ShoulderRef.ScapulaEllipsoidOrigin.Elipse;
-      NormedMeasureOnOff = Off;
     };
     
     AnyKinMeasureOrg RotZ = {

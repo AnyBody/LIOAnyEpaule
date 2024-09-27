@@ -16,52 +16,52 @@ AnyFolder ArmCal3 ={
   AnyFolder &SegSideCal = .SideHumanFolderRef.ShoulderArm.Seg;
   AnyFolder &JointsSideCal = .SideHumanFolderRef.ShoulderArm.Jnt;
   
-  AnyShortestPathMuscle &bbcb =  .SideHumanFolderRef.ShoulderArm.Mus.biceps_brachii_caput_breve;
-  AnyShortestPathMuscle &bbcl =  .SideHumanFolderRef.ShoulderArm.Mus.biceps_brachii_caput_longum;
+  AnyMuscleShortestPath &bbcb =  .SideHumanFolderRef.ShoulderArm.Mus.biceps_brachii_caput_breve;
+  AnyMuscleShortestPath &bbcl =  .SideHumanFolderRef.ShoulderArm.Mus.biceps_brachii_caput_longum;
   
   
-  AnyShortestPathMuscle &pec11 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_clavicular_part_1;
-  AnyShortestPathMuscle &pec21 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_clavicular_part_2;
-  AnyShortestPathMuscle &pec31 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_clavicular_part_3;
-  AnyShortestPathMuscle &pec41 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_clavicular_part_4;
-  AnyShortestPathMuscle &pec51 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_clavicular_part_5;
-  
-  
-  
-  AnyShortestPathMuscle &pec1 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_thoracic_part_1;
-  AnyShortestPathMuscle &pec2 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_thoracic_part_2;
-  AnyShortestPathMuscle &pec3 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_thoracic_part_3;
-  AnyShortestPathMuscle &pec4 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_thoracic_part_4;
-  AnyShortestPathMuscle &pec5 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_thoracic_part_5;
+  AnyMuscleShortestPath &pec11 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_clavicular_part_1;
+  AnyMuscleShortestPath &pec21 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_clavicular_part_2;
+  AnyMuscleShortestPath &pec31 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_clavicular_part_3;
+  AnyMuscleShortestPath &pec41 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_clavicular_part_4;
+  AnyMuscleShortestPath &pec51 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_clavicular_part_5;
   
   
   
+  AnyMuscleShortestPath &pec1 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_thoracic_part_1;
+  AnyMuscleShortestPath &pec2 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_thoracic_part_2;
+  AnyMuscleShortestPath &pec3 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_thoracic_part_3;
+  AnyMuscleShortestPath &pec4 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_thoracic_part_4;
+  AnyMuscleShortestPath &pec5 =  .SideHumanFolderRef.ShoulderArm.Mus.pectoralis_major_thoracic_part_5;
   
   
   
   
-  AnyShortestPathMuscle &lat1 =  .SideHumanFolderRef.ShoulderArm.Mus.latissimus_dorsi_1;
-  AnyShortestPathMuscle &lat2 =  .SideHumanFolderRef.ShoulderArm.Mus.latissimus_dorsi_2;
-  AnyShortestPathMuscle &lat3 =  .SideHumanFolderRef.ShoulderArm.Mus.latissimus_dorsi_3;
-  //AnyShortestPathMuscle &lat4 =  .SideHumanFolderRef.ShoulderArm.Mus.latissimus_dorsi_4;
-  //AnyShortestPathMuscle &lat5 =  .SideHumanFolderRef.ShoulderArm.Mus.latissimus_dorsi_5;
+  
+  
+  
+  AnyMuscleShortestPath &lat1 =  .SideHumanFolderRef.ShoulderArm.Mus.latissimus_dorsi_1;
+  AnyMuscleShortestPath &lat2 =  .SideHumanFolderRef.ShoulderArm.Mus.latissimus_dorsi_2;
+  AnyMuscleShortestPath &lat3 =  .SideHumanFolderRef.ShoulderArm.Mus.latissimus_dorsi_3;
+  //AnyMuscleShortestPath &lat4 =  .SideHumanFolderRef.ShoulderArm.Mus.latissimus_dorsi_4;
+  //AnyMuscleShortestPath &lat5 =  .SideHumanFolderRef.ShoulderArm.Mus.latissimus_dorsi_5;
   
   
   
   
-  AnyShortestPathMuscle &ter1 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_major_1;
-  AnyShortestPathMuscle &ter2 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_major_2;
-  AnyShortestPathMuscle &ter3 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_major_3;
-  AnyShortestPathMuscle &ter4 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_major_4;
-  AnyShortestPathMuscle &ter5 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_major_5;
-  AnyShortestPathMuscle &ter6 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_major_6;
+  AnyMuscleShortestPath &ter1 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_major_1;
+  AnyMuscleShortestPath &ter2 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_major_2;
+  AnyMuscleShortestPath &ter3 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_major_3;
+  AnyMuscleShortestPath &ter4 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_major_4;
+  AnyMuscleShortestPath &ter5 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_major_5;
+  AnyMuscleShortestPath &ter6 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_major_6;
   
-  AnyShortestPathMuscle &ter11 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_minor_1;
-  AnyShortestPathMuscle &ter21 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_minor_2;
-  AnyShortestPathMuscle &ter31 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_minor_3;
-  AnyShortestPathMuscle &ter41 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_minor_4;
-  AnyShortestPathMuscle &ter51 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_minor_5;
-  AnyShortestPathMuscle &ter61 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_minor_6;
+  AnyMuscleShortestPath &ter11 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_minor_1;
+  AnyMuscleShortestPath &ter21 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_minor_2;
+  AnyMuscleShortestPath &ter31 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_minor_3;
+  AnyMuscleShortestPath &ter41 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_minor_4;
+  AnyMuscleShortestPath &ter51 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_minor_5;
+  AnyMuscleShortestPath &ter61 =  .SideHumanFolderRef.ShoulderArm.Mus.teres_minor_6;
   
   
   

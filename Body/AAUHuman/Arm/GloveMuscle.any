@@ -7,38 +7,38 @@ MusPar={
 };
 
 Mus={
-  AnyGeneralMuscle RotMuscleZPos={
+  AnyMuscleGeneric RotMuscleZPos={
     AnyKinMeasureOrg &ref=..Jnt.HandGloveRotZ;
     AnyMuscleModel &mdl=..MusPar.HandGloveMomentStrength;
-    ForceDirection=-1;
+    Type = NonPositive;
   };
   
-  AnyGeneralMuscle RotMuscleZNeg={
+  AnyMuscleGeneric RotMuscleZNeg={
     AnyKinMeasureOrg &ref=..Jnt.HandGloveRotZ;
     AnyMuscleModel &mdl=..MusPar.HandGloveMomentStrength;
-    ForceDirection=1;
+    Type = NonNegative;
   };
   
-  AnyGeneralMuscle RotMuscleYPos={
+  AnyMuscleGeneric RotMuscleYPos={
     AnyKinMeasureOrg &ref=..Jnt.HandGloveRotY;
     AnyMuscleModel &mdl=..MusPar.HandGloveMomentStrength;
-    ForceDirection=-1;
+    Type = NonPositive;
   };
   
-  AnyGeneralMuscle RotMuscleYNeg={
+  AnyMuscleGeneric RotMuscleYNeg={
     AnyKinMeasureOrg &ref=..Jnt.HandGloveRotY;
     AnyMuscleModel &mdl=..MusPar.HandGloveMomentStrength;
-    ForceDirection=1;
+    Type = NonNegative;
   };
-  AnyGeneralMuscle RotMuscleXPos={
+  AnyMuscleGeneric RotMuscleXPos={
     AnyKinMeasureOrg &ref=..Jnt.HandGloveRotX;
     AnyMuscleModel &mdl=..MusPar.HandGloveMomentStrength;
-    ForceDirection=-1;
+    Type = NonPositive;
   };
   
-  AnyGeneralMuscle RotMuscleXNeg={
+  AnyMuscleGeneric RotMuscleXNeg={
     AnyKinMeasureOrg &ref=..Jnt.HandGloveRotX;
     AnyMuscleModel &mdl=..MusPar.HandGloveMomentStrength;
-    ForceDirection=1;
+    Type = NonNegative;
   };
 };
